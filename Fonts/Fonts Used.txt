@@ -1,0 +1,7 @@
+Button Text: Copperplate
+
+Label or special comment text: Luxia
+
+Body text: Gill Sans
+
+Tagline: Alex Brush
