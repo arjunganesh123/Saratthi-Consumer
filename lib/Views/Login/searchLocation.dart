@@ -72,6 +72,7 @@ class _SearchLocationState extends State<SearchLocation> {
                                             "assets/Icons/008-home.png",
                                             height: 20,
                                             width: 20,
+                                            color: givenBlue,
                                             fit: BoxFit.fitWidth,
                                           ),
                                         ),
@@ -93,6 +94,7 @@ class _SearchLocationState extends State<SearchLocation> {
                                             "assets/Icons/008-home.png",
                                             height: 20,
                                             width: 20,
+                                            color: givenBlue,
                                             fit: BoxFit.fitWidth,
                                           ),
                                         ),
@@ -114,6 +116,7 @@ class _SearchLocationState extends State<SearchLocation> {
                                             "assets/Icons/008-home.png",
                                             height: 20,
                                             width: 20,
+                                            color: givenBlue,
                                             fit: BoxFit.fitWidth,
                                           ),
                                         ),
@@ -135,29 +138,32 @@ class _SearchLocationState extends State<SearchLocation> {
                         Container(
                           margin: EdgeInsets.all(8.0),
                           padding: EdgeInsets.all(8.0),
+                          height: 70.0,
                           decoration: BoxDecoration(color: HexColor('#ffffff')),
-                          child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.location_pin),
-                                iconColor: givenBlue,
-                                hintText:
-                                    'Search Arrival locations for Saratthi',
-                                hintStyle: TextStyle(
-                                    fontSize: 17.0,
-                                    fontFamily: 'gillsans',
-                                    color: givenBlue),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: HexColor('#fffff')),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: HexColor("#fffff")),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.location_pin,
+                                color: givenBlue,
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => searchBar(),
+                                  ));
+                                },
+                                child: Text(
+                                  "Search Arrival locations for Saratthi",
+                                  style: TextStyle(
+                                      fontSize: 17.0,
+                                      fontFamily: 'gillsans',
+                                      color: givenBlue),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                         SizedBox(
@@ -186,6 +192,7 @@ class _SearchLocationState extends State<SearchLocation> {
                                 Text(
                                   "Female Drivers Only",
                                   style: TextStyle(
+                                      color: givenBlue,
                                       fontSize: 17.0,
                                       fontFamily: 'gillsans',
                                       fontWeight: FontWeight.w100),
@@ -198,25 +205,32 @@ class _SearchLocationState extends State<SearchLocation> {
                         Container(
                           margin: EdgeInsets.all(8.0),
                           padding: EdgeInsets.all(8.0),
+                          height: 70.0,
                           decoration: BoxDecoration(color: HexColor('#ffffff')),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              icon: Icon(Icons.location_pin),
-                              iconColor: givenBlue,
-                              hintStyle: TextStyle(
-                                  fontSize: 17.0,
-                                  fontFamily: 'gillsans',
-                                  color: givenBlue),
-                              hintText: "Input Saratthi's Drop Off Location",
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: HexColor('#fffff')),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.location_pin,
+                                color: givenBlue,
                               ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: HexColor("#fffff")),
+                              SizedBox(
+                                width: 20,
                               ),
-                            ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => searchBar(),
+                                  ));
+                                },
+                                child: Text(
+                                  "Input Saratthi's Drop Off Location",
+                                  style: TextStyle(
+                                      fontSize: 17.0,
+                                      fontFamily: 'gillsans',
+                                      color: givenBlue),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         SizedBox(

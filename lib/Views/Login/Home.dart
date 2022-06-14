@@ -3,9 +3,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saratthi_consumer/Views/Login/searchLocation.dart';
-
-import '../../Helpers/searchbar.dart';
-
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -14,7 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  LatLng _initialcameraposition = const LatLng(0.0, 0.0);
+  LatLng _initialcameraposition = const LatLng(28.7041, 77.1025);
   late GoogleMapController _controller;
   Location _location = Location();
   final Set<Marker> _markers = Set();
@@ -42,7 +39,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController SearchController = TextEditingController();
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -87,33 +83,59 @@ class _HomeState extends State<Home> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(40),
-                                  child: Image.asset(
-                                    'assets/Car_Make-Brands/Audi.png',
-                                    height: 50,
-                                    width: 50,
-                                    fit: BoxFit.fitWidth,
+                              Stack(
+                                children: [
+                                  Container(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(40),
+                                      child: Image.asset(
+                                        'assets/Car_Make-Brands/Ford.png',
+                                        height: 50,
+                                        width: 50,
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Positioned(
+                                    top: 0,
+                                    right: 0,
+                                    child: Image.asset(
+                                        'assets/Icons/001-gearshift.png',
+                                        width: 15.0,
+                                        height: 15.0,
+                                        color: Colors.lightGreen),
+                                  ),
+                                ],
                               ),
                               SizedBox(
-                                width: 10.0,
+                                width: 17.0,
                               ),
-                              Container(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(40),
-                                  child: Image.asset(
-                                    'assets/Car_Make-Brands/Ford.png',
-                                    height: 50,
-                                    width: 50,
-                                    fit: BoxFit.fitWidth,
+                              Stack(
+                                children: [
+                                  Container(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(40),
+                                      child: Image.asset(
+                                        'assets/Car_Make-Brands/Audi.png',
+                                        height: 50,
+                                        width: 50,
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Positioned(
+                                    top: 0,
+                                    right: 0,
+                                    child: Image.asset(
+                                        'assets/Icons/001-gearshift.png',
+                                        width: 15.0,
+                                        height: 15.0,
+                                        color: Colors.lightGreen),
+                                  ),
+                                ],
                               ),
                               SizedBox(
-                                width: 10.0,
+                                width: 17.0,
                               ),
                               Stack(
                                 children: [
@@ -128,14 +150,15 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                   ),
-                                  Align(
-                                    alignment: Alignment.topLeft,
+                                  Positioned(
+                                    top: 0,
+                                    right: 0,
                                     child: Image.asset(
-                                      'assets/Icons/001-gearshift.png',
-                                      width: 25.0,
-                                      height: 25.0,
-                                    ),
-                                  )
+                                        'assets/Icons/001-gearshift.png',
+                                        width: 15.0,
+                                        height: 15.0,
+                                        color: Colors.lightGreen),
+                                  ),
                                 ],
                               )
                             ]),

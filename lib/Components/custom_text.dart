@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../Constants/size_config.dart';
-
 Widget CustomText({
   String? text,
   double? fontSize,
   FontWeight? fontWeight,
+  String? fontFamily,
   Color? color,
   TextAlign? position,
 }) {
@@ -15,6 +14,7 @@ Widget CustomText({
       color: color,
       fontSize: fontSize,
       fontWeight: fontWeight,
+      fontFamily: fontFamily,
     ),
     textAlign: position,
   );

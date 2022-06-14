@@ -4,7 +4,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import 'package:google_maps_webservice/places.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:google_maps_webservice/places.dart';
-import 'package:location/location.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -21,7 +20,8 @@ class searchBar extends StatefulWidget {
 }
 
 class _searchBarState extends State<searchBar> {
-  LatLng _initialcameraposition = const LatLng(0.0, 0.0);
+  // TextEditingController SearchController = TextEditingController();
+  LatLng _initialcameraposition = const LatLng(28.7041, 77.1025);
   String googleApikey = "AIzaSyDR4UpsJx8zPYuqGzq1BoWS4YE1J_Qu8E4";
   GoogleMapController? mapController; //contrller for Google map
   CameraPosition? cameraPosition;

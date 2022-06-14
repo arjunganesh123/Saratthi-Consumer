@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:saratthi_consumer/Components/custom_text.dart';
 import 'package:saratthi_consumer/Views/Login/verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -26,6 +25,7 @@ class _JoinState extends State<Join> {
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
         body: Center(
           child: SingleChildScrollView(
@@ -66,7 +66,7 @@ class _JoinState extends State<Join> {
                   width: 100 * w,
                   child: Column(
                     children: [
-                       Center(
+                      Center(
                         child: Text("We drive you better",
                             style: TextStyle(
                                 fontSize: 25,
@@ -77,7 +77,7 @@ class _JoinState extends State<Join> {
                       SizedBox(height: 10),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children:  [
+                          children: [
                             Text(
                               "We need a few more information to make sure you ",
                               style: TextStyle(
@@ -87,7 +87,7 @@ class _JoinState extends State<Join> {
                       SizedBox(height: 2),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children:  [
+                          children: [
                             Text(
                               "get the most out of the app.",
                               style: TextStyle(
@@ -99,7 +99,7 @@ class _JoinState extends State<Join> {
                 ),
                 Container(
                   width: 85 * w,
-                  margin:  EdgeInsets.only(top: 40.0),
+                  margin: EdgeInsets.only(top: 40.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -121,7 +121,7 @@ class _JoinState extends State<Join> {
                         child: TextField(
                           controller: phone,
                           keyboardType: TextInputType.phone,
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),

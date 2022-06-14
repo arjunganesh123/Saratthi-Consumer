@@ -5,9 +5,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:saratthi_consumer/Components/custom_text.dart';
+import 'package:saratthi_consumer/Views/Login/newuser.dart';
 import 'package:timer_button/timer_button.dart';
 
-import 'Home.dart';
 import 'join.dart';
 
 class Verify extends StatefulWidget {
@@ -29,32 +29,39 @@ class _VerifyState extends State<Verify> {
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Positioned(child: 
-                Container(
-                  width: 100 * w,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Card(
-                      child: Image.asset(
-                          "assets/Images/image2-620x525_consumer.png",
-                          fit: BoxFit.cover),
-                    ),
+        body: Stack(
+          children: <Widget>[
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Card(
+                  child: Image.asset(
+                    "assets/Images/image2-620x525_consumer.png",
+                    fit: BoxFit.cover,
+                    height: 50 * h,
                   ),
-                ),top: 0,right: 0,left: 0,),
-                Positioned(left: 0.0,right: 0.0,bottom: 0.0,
-                child:Container(
-                    height: 470.0,
+                ),
+              ),
+            ),
+            Positioned(
+                left: 0.0,
+                right: 0.0,
+                bottom: 0.0,
+                child: Container(
+                    height: 450.0,
                     margin: EdgeInsets.only(top: 5.0),
-                    decoration:const BoxDecoration(
-                        borderRadius:BorderRadius.only(topLeft: Radius.circular(18.0),topRight:Radius.circular(18.0)),
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(18.0),
+                            topRight: Radius.circular(18.0)),
                         color: Color.fromRGBO(247, 247, 247, 1),
                         boxShadow: [
-                           BoxShadow(
+                          BoxShadow(
                             color: Colors.black,
                             blurRadius: 4.0,
                           ),
@@ -108,16 +115,14 @@ class _VerifyState extends State<Verify> {
                                   builder: (context) => Join()));
                             },
                             child: Row(children: [
-                              SizedBox(
-                                width: 20.0,
-                              ),
+                              SizedBox(width: w * 7),
                               CustomText(
                                 text: "Edit Number",
                                 fontSize: 12,
                                 color: givenBlue,
                               ),
                               SizedBox(
-                                width: 140.0,
+                                width: w * 30,
                               ),
                               TimerButton(
                                 label: "Send OTP Again",
@@ -125,8 +130,8 @@ class _VerifyState extends State<Verify> {
                                 onPressed: () {},
                                 disabledColor: Color.fromRGBO(247, 247, 247, 1),
                                 buttonType: ButtonType.TextButton,
-                                disabledTextStyle:
-                                    new TextStyle(fontSize: 12.0),
+                                disabledTextStyle: new TextStyle(
+                                    fontSize: 12.0, color: givenBlue),
                                 activeTextStyle: new TextStyle(
                                     fontSize: 12.0,
                                     color: Color.fromARGB(255, 243, 124, 33)),
@@ -186,6 +191,9 @@ class _VerifyState extends State<Verify> {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 10 * h,
+                      ),
                       ElevatedButton(
                         style: ButtonStyle(
                           shape:
@@ -213,9 +221,7 @@ class _VerifyState extends State<Verify> {
                         ),
                       ),
                     ])))
-              ],
-            ),
-          ),
+          ],
         ),
       ),
     );
@@ -226,14 +232,13 @@ class _VerifyState extends State<Verify> {
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: otp.text);
 
-    await auth.signInWithCredential(credential).then((value)
-      async {
-            if (value.user != null) {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => Home()),
-                  (route) => false);
-            }
+    await auth.signInWithCredential(credential).then((value) async {
+      if (value.user != null) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Design()),
+            (route) => false);
+      }
       print("You are logged in successfully");
       Fluttertoast.showToast(
           msg: "You are logged in successfully",
@@ -244,9 +249,7 @@ class _VerifyState extends State<Verify> {
           textColor: Colors.white,
           fontSize: 16.0);
     });
-
   }
-
 
   ///////Resend OTP
 
