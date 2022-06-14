@@ -3,8 +3,11 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saratthi_consumer/Views/Login/searchLocation.dart';
+
+import '../../Helpers/change.dart';
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  List<Change2> logo=<Change2>[];
+  Home( {Key? key,required List<Change2> logo}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -76,94 +79,49 @@ class _HomeState extends State<Home> {
                   child: Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.1),
-                      child: Column(children: [
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
                         SizedBox(
                           height: 20,
                         ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Stack(
-                                children: [
-                                  Container(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(40),
-                                      child: Image.asset(
-                                        'assets/Car_Make-Brands/Ford.png',
-                                        height: 50,
-                                        width: 50,
-                                        fit: BoxFit.fitWidth,
+                        Container(
+                          padding: EdgeInsets.only(left: 40),
+                          width: MediaQuery.of(context).size.width,
+                          height: 50,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 3,
+                            itemBuilder: (context, counter) {
+                              return Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(40),
+                                        child: Image.asset(
+                                          'assets/Car_Make-Brands/Ford.png',
+                                          height: 50,
+                                          width: 50,
+                                          fit: BoxFit.fitWidth,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    top: 0,
-                                    right: 0,
-                                    child: Image.asset(
-                                        'assets/Icons/001-gearshift.png',
-                                        width: 15.0,
-                                        height: 15.0,
-                                        color: Colors.lightGreen),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 17.0,
-                              ),
-                              Stack(
-                                children: [
-                                  Container(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(40),
+                                    Positioned(
+                                      top: 0,
+                                      right: 0,
                                       child: Image.asset(
-                                        'assets/Car_Make-Brands/Audi.png',
-                                        height: 50,
-                                        width: 50,
-                                        fit: BoxFit.fitWidth,
-                                      ),
+                                          'assets/Icons/001-gearshift.png',
+                                          width: 15.0,
+                                          height: 15.0,
+                                          color: Colors.lightGreen),
                                     ),
-                                  ),
-                                  Positioned(
-                                    top: 0,
-                                    right: 0,
-                                    child: Image.asset(
-                                        'assets/Icons/001-gearshift.png',
-                                        width: 15.0,
-                                        height: 15.0,
-                                        color: Colors.lightGreen),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 17.0,
-                              ),
-                              Stack(
-                                children: [
-                                  Container(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(40),
-                                      child: Image.asset(
-                                        'assets/Car_Make-Brands/Kia.png',
-                                        height: 50,
-                                        width: 50,
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    top: 0,
-                                    right: 0,
-                                    child: Image.asset(
-                                        'assets/Icons/001-gearshift.png',
-                                        width: 15.0,
-                                        height: 15.0,
-                                        color: Colors.lightGreen),
-                                  ),
-                                ],
-                              )
-                            ]),
-                        SizedBox(
-                          height: 10,
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         ),
                         Center(
                           child: Container(
