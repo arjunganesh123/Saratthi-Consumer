@@ -13,7 +13,7 @@ class SearchLocation extends StatefulWidget {
 
 class _SearchLocationState extends State<SearchLocation> {
   bool status = false;
-  Color givenBlue = HexColor('#314b5');
+  Color givenBlue = HexColor('#314b5c');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
