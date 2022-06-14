@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Helpers/searchbar.dart';
 
 class SearchLocation extends StatefulWidget {
   const SearchLocation({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _SearchLocationState extends State<SearchLocation> {
               right: 0,
               left: 0,
               child: Container(
-                  height: 650.0,
+                  height: 700.0,
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.only(
@@ -132,8 +133,8 @@ class _SearchLocationState extends State<SearchLocation> {
                           height: 20.0,
                         ),
                         Container(
-                          margin: EdgeInsets.all(10.0),
-                          padding: EdgeInsets.all(10.0),
+                          margin: EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           decoration: BoxDecoration(color: HexColor('#ffffff')),
                           child: Container(
                             padding: EdgeInsets.all(5.0),
@@ -143,6 +144,10 @@ class _SearchLocationState extends State<SearchLocation> {
                                 iconColor: givenBlue,
                                 hintText:
                                     'Search Arrival locations for Saratthi',
+                                hintStyle: TextStyle(
+                                    fontSize: 17.0,
+                                    fontFamily: 'gillsans',
+                                    color: givenBlue),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: HexColor('#fffff')),
@@ -156,51 +161,127 @@ class _SearchLocationState extends State<SearchLocation> {
                           ),
                         ),
                         SizedBox(
-                          height: 20.0,
+                          height: 9.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                FlutterSwitch(
+                                  width: 55.0,
+                                  height: 25.0,
+                                  valueFontSize: 12.0,
+                                  toggleSize: 18.0,
+                                  value: status,
+                                  onToggle: (isOn) {
+                                    setState(() {
+                                      status = isOn;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 14.0,
+                                ),
+                                Text(
+                                  "Female Drivers Only",
+                                  style: TextStyle(
+                                      fontSize: 17.0,
+                                      fontFamily: 'gillsans',
+                                      fontWeight: FontWeight.w100),
+                                )
+                              ]),
+                        ),
+                        SizedBox(
+                          height: 9.0,
                         ),
                         Container(
-                          child: FlutterSwitch(
-                            width: 125.0,
-                            height: 55.0,
-                            valueFontSize: 25.0,
-                            toggleSize: 45.0,
-                            value: status,
-                            borderRadius: 30.0,
-                            padding: 8.0,
-                            onToggle: (val) {
-                              setState(() {
-                                status = val;
-                              });
-                            },
+                          margin: EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(color: HexColor('#ffffff')),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              icon: Icon(Icons.location_pin),
+                              iconColor: givenBlue,
+                              hintStyle: TextStyle(
+                                  fontSize: 17.0,
+                                  fontFamily: 'gillsans',
+                                  color: givenBlue),
+                              hintText: "Input Saratthi's Drop Off Location",
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: HexColor('#fffff')),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: HexColor("#fffff")),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
                           height: 20.0,
                         ),
-                        Container(
-                          margin: EdgeInsets.all(10.0),
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(color: HexColor('#ffffff')),
+                        Align(
+                          alignment: Alignment.centerLeft,
                           child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                icon: Icon(Icons.location_pin),
-                                iconColor: givenBlue,
-                                hintText:
-                                    'Search Arrival locations for Saratthi',
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: HexColor('#fffff')),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: HexColor("#fffff")),
-                                ),
+                            width: 300.0,
+                            margin: EdgeInsets.only(left: 40.0),
+                            padding: EdgeInsets.only(bottom: 10.0),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom:
+                                    BorderSide(width: 1.0, color: Colors.black),
                               ),
                             ),
+                            child: Text(
+                              "Singh and Singh Eatery",
+                              style: TextStyle(fontSize: 17),
+                            ),
                           ),
-                        )
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            width: 300.0,
+                            margin: EdgeInsets.only(left: 40.0),
+                            padding: EdgeInsets.only(bottom: 10.0),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom:
+                                    BorderSide(width: 1.0, color: Colors.black),
+                              ),
+                            ),
+                            child: Text(
+                              "Singh and Singh Eatery",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            width: 300.0,
+                            margin: EdgeInsets.only(left: 40.0),
+                            padding: EdgeInsets.only(bottom: 10.0),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom:
+                                    BorderSide(width: 1.0, color: Colors.black),
+                              ),
+                            ),
+                            child: Text(
+                              "Singh and Singh Eatery",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   )),
