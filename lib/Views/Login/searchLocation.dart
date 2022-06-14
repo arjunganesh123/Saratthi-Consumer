@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:saratthi_consumer/Helpers/searchbar.dart';
+import 'package:saratthi_consumer/Views/Login/bottomup.dart';
 
 class SearchLocation extends StatefulWidget {
   const SearchLocation({Key? key}) : super(key: key);
@@ -11,10 +12,10 @@ class SearchLocation extends StatefulWidget {
 }
 
 class _SearchLocationState extends State<SearchLocation> {
+  bool status = false;
+  Color givenBlue = HexColor('#314b5c');
   @override
   Widget build(BuildContext context) {
-    Color givenBlue = HexColor('#314b5c');
-    bool status = false;
     return Scaffold(
       body: Container(
         child: Stack(
@@ -183,6 +184,13 @@ class _SearchLocationState extends State<SearchLocation> {
                                   onToggle: (isOn) {
                                     setState(() {
                                       status = isOn;
+                                      if(status==true){
+                                        showModalBottomSheet(
+                                            context: context,
+                                            builder:(context){
+                                              return BottomUp();
+                                            });
+                                      }
                                     });
                                   },
                                 ),
