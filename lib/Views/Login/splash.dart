@@ -18,8 +18,7 @@ class _splashState extends State<splash> {
         Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(
               new MyCustomRoute(
-                builder: (context) =>
-                    StartupLogic().getLandingPage(context) /* Join()*/,
+                builder: (context) => StartupLogic().getLandingPage(context),
               ),
             ));
   }
