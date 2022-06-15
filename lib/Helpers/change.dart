@@ -12,3 +12,8 @@ class Change2{
   Color changecolor;
   Change2({required this.image,required this.changecolor});
 }
+
+class Refer{
+  String image;
+  Refer({required this.image});
+}

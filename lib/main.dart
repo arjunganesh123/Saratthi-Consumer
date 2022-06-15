@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:saratthi_consumer/Views/Login/newuser.dart';
+import 'package:saratthi_consumer/Views/Login/referandearn.dart';
 import 'package:saratthi_consumer/Views/Login/splash.dart';
 
 import 'Views/Login/searchLocation.dart';
