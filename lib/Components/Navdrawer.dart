@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Views/Login/notification.dart';
+import 'package:saratthi_consumer/Views/Login/referandearn.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -158,7 +160,7 @@ class NavDrawer extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              onTap: () => {Navigator.of(context).pop()},
+              onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationPage(),),),},
             ),
             ListTile(
               leading: Image.asset(
@@ -175,7 +177,7 @@ class NavDrawer extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              onTap: () => {Navigator.of(context).pop()},
+              onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>ReferAndEarn(),),),},
             ),
             ListTile(
               leading: Image.asset(

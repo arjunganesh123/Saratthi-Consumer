@@ -70,7 +70,7 @@ class _NotificationPageState extends State<NotificationPage> {
               padding: const EdgeInsets.only(left: 20,top: 20),
               child: Text('NOTIFICATIONS',style: TextStyle(fontSize: 15,color: widget.givenBlue,fontFamily: 'gillsans',wordSpacing: 2),),
           ),
-          const SizedBox(height: 30,),
+          const SizedBox(height: 15,),
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height*0.6,
@@ -87,6 +87,7 @@ class _NotificationPageState extends State<NotificationPage> {
     }
     else{
       return ListView.builder(
+        padding: EdgeInsets.zero,
         scrollDirection: Axis.vertical,
         itemCount: widget.listnumber,
         itemBuilder: (context, counter) {
