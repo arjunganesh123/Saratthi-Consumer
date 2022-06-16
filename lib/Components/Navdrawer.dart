@@ -1,5 +1,5 @@
-import 'package:getwidget/getwidget.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class NavDrawer extends StatelessWidget {

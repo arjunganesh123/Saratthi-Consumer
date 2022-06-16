@@ -56,14 +56,14 @@ class _NotificationPageState extends State<NotificationPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Card(
-            elevation: 10,
+            elevation: 15,
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height*0.25,
               decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              child: Image.asset('assets/Images/notifications_consumer.png',fit: BoxFit.fill,),
+              child: Image.asset('assets/Images/notifications_consumer.png',fit: BoxFit.cover,),
             ),
           ),
           Padding(
@@ -112,7 +112,7 @@ class _NotificationPageState extends State<NotificationPage> {
                         children: [
                           Image.asset('assets/Icons/038-notification-bell-1.png',width: 30,height: 30,),
                           SizedBox(width: MediaQuery.of(context).size.width*0.02,),
-                          const Text('This is the heading(60 Chars)',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: 'gillsans'),)
+                          const Text('This is the heading(60 Chars)',style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,fontSize: 17,fontFamily: 'gillsans'),)
                         ],
                       ),
                       const SizedBox(height: 20,),
