@@ -69,7 +69,7 @@ class _VerifyState extends State<Verify> {
                 bottom: 0.0,
                 child: Container(
                     height: 450.0,
-                    margin: EdgeInsets.only(top: 5.0),
+                    margin: const EdgeInsets.only(top: 5.0),
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(18.0),
@@ -119,7 +119,7 @@ class _VerifyState extends State<Verify> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                         margin: EdgeInsets.only(top: 10.0),
                         child: Align(
@@ -160,7 +160,7 @@ class _VerifyState extends State<Verify> {
                         margin: const EdgeInsets.only(top: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
+                          children: const <Widget>[
                             // Container(
                             //   margin:
                             //       EdgeInsets.only(top: 2 * h, bottom: 2 * h),
@@ -205,7 +205,7 @@ class _VerifyState extends State<Verify> {
                             pinTheme: PinTheme(
                                 activeColor: givenBlue,
                                 inactiveColor:
-                                    Color.fromARGB(255, 243, 124, 33),
+                                    const Color.fromARGB(255, 243, 124, 33),
                                 borderWidth: 3.0),
                             controller: otp,
                             cursorColor: givenBlue,

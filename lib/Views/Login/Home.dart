@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:location/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:saratthi_consumer/Components/Navdrawer.dart';
 import 'package:saratthi_consumer/Views/Login/searchLocation.dart';
 
 import '../../Helpers/change.dart';
-import '../../Helpers/searchbar.dart';
 
 class Home extends StatefulWidget {
   List<Change2> logo = <Change2>[];
@@ -44,7 +44,10 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
+    var w = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer: NavDrawer(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -63,8 +66,8 @@ class _HomeState extends State<Home> {
                 top: 45.0,
                 child: InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => searchBar()));
+                    // Navigator.of(context).push(
+                    //     MaterialPageRoute(builder: (context) => NavDrawer()));
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(60.0),
@@ -88,7 +91,7 @@ class _HomeState extends State<Home> {
               right: 0.0,
               bottom: 0.0,
               child: Container(
-                  height: 150.0,
+                  height: h * .20,
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.only(
@@ -127,11 +130,11 @@ class _HomeState extends State<Home> {
                                         Container(
                                           child: ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(40),
+                                                BorderRadius.circular(60),
                                             child: Image.asset(
                                               'assets/Car_Make-Brands/Ford.png',
-                                              height: 50,
-                                              width: 50,
+                                              height: w * .17,
+                                              width: w * .17,
                                               fit: BoxFit.fitWidth,
                                             ),
                                           ),
@@ -172,7 +175,7 @@ class _HomeState extends State<Home> {
                                           // elevation: 10.0,
                                           builder: (context) {
                                             return FractionallySizedBox(
-                                              heightFactor: .9,
+                                              heightFactor: .8,
                                               child: SearchLocation(),
                                             );
                                           });
