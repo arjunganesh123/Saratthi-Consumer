@@ -16,6 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
   LatLng _initialcameraposition = const LatLng(28.7041, 77.1025);
   late GoogleMapController _controller;
   Location _location = Location();
@@ -47,6 +48,7 @@ class _HomeState extends State<Home> {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
+      key: _scaffoldState,
       drawer: NavDrawer(),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -66,8 +68,7 @@ class _HomeState extends State<Home> {
                 top: 45.0,
                 child: InkWell(
                   onTap: () {
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(builder: (context) => NavDrawer()));
+                    _scaffoldState.currentState!.openDrawer();
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(60.0),
@@ -92,7 +93,7 @@ class _HomeState extends State<Home> {
               bottom: 0.0,
               child: Container(
                   height: h * .20,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(18.0),
@@ -107,16 +108,17 @@ class _HomeState extends State<Home> {
                         )
                       ]),
                   child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.1),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0.0, horizontal: 0.1),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 20, right: 20),
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               child: ListView.builder(
@@ -169,7 +171,7 @@ class _HomeState extends State<Home> {
                                           isScrollControlled: true,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(50.0),
+                                                BorderRadius.circular(30.0),
                                           ),
                                           context: context,
                                           // elevation: 10.0,
