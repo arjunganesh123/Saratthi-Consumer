@@ -172,6 +172,7 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
+
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => NotificationPage(),
