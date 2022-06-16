@@ -172,7 +172,12 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationPage(),),),},
+
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => NotificationPage(),
+                    ));
+                  },
                 ),
                 ListTile(
                   leading: Image.asset(
