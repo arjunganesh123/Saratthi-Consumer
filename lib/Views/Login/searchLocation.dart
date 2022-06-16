@@ -168,7 +168,7 @@ class _SearchLocationState extends State<SearchLocation> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
-                                content: BottomUp(),
+                                content: const BottomUp(),
                               );
                             });
                       }

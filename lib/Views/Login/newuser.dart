@@ -236,7 +236,8 @@ class Grid {
           )),
         ],
       );
-    } else {
+    }
+    else {
       return GridView.builder(
         itemCount: car_detail.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
