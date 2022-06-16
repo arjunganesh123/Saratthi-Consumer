@@ -76,7 +76,7 @@ class BottomUp extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 30,
+                width: 10,
               ),
               ElevatedButton(
                 style: ButtonStyle(
