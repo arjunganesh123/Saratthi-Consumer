@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -26,105 +27,103 @@ class _SearchLocationState extends State<SearchLocation> {
           right: 0,
           child: Container(
               height: h * .80,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Color.fromRGBO(247, 247, 247, 1),
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(50.0),
-                    topRight: Radius.circular(50.0),
+                    topLeft: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
                   ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black,
                       blurRadius: 16.0,
                       spreadRadius: .5,
-                      offset: Offset(0.7, 0.7),
+                      offset: const Offset(0.7, 0.7),
                     )
                   ]),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 19.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            InkWell(
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    child: Image.asset(
-                                      "assets/Icons/008-home.png",
-                                      height: 20,
-                                      width: 20,
-                                      color: givenBlue,
-                                      fit: BoxFit.fitWidth,
-                                    ),
+                      Row(
+                        children: [
+                          InkWell(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  child: Image.asset(
+                                    "assets/Icons/008-home.png",
+                                    height: 20,
+                                    width: 20,
+                                    color: givenBlue,
+                                    fit: BoxFit.fitWidth,
                                   ),
-                                  SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Text("Home"),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                const Text("Home"),
+                              ],
                             ),
-                            SizedBox(
-                              width: 30.0,
-                            ),
-                            InkWell(
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    child: Image.asset(
-                                      "assets/Icons/008-home.png",
-                                      height: 20,
-                                      width: 20,
-                                      color: givenBlue,
-                                      fit: BoxFit.fitWidth,
-                                    ),
+                          ),
+                          const SizedBox(
+                            width: 30.0,
+                          ),
+                          InkWell(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  child: Image.asset(
+                                    "assets/Icons/008-home.png",
+                                    height: 20,
+                                    width: 20,
+                                    color: givenBlue,
+                                    fit: BoxFit.fitWidth,
                                   ),
-                                  SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Text("Work"),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                const Text("Work"),
+                              ],
                             ),
-                            SizedBox(
-                              width: 30.0,
-                            ),
-                            InkWell(
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    child: Image.asset(
-                                      "assets/Icons/008-home.png",
-                                      height: 20,
-                                      width: 20,
-                                      color: givenBlue,
-                                      fit: BoxFit.fitWidth,
-                                    ),
+                          ),
+                          const SizedBox(
+                            width: 30.0,
+                          ),
+                          InkWell(
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  child: Image.asset(
+                                    "assets/Icons/008-home.png",
+                                    height: 20,
+                                    width: 20,
+                                    color: givenBlue,
+                                    fit: BoxFit.fitWidth,
                                   ),
-                                  SizedBox(
-                                    width: 10.0,
-                                  ),
-                                  Text("Others"),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                const Text("Others"),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   Container(
-                    margin: EdgeInsets.all(8.0),
-                    padding: EdgeInsets.all(8.0),
+                    margin: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     height: 70.0,
                     decoration: BoxDecoration(color: HexColor('#ffffff')),
                     child: Row(
@@ -133,7 +132,7 @@ class _SearchLocationState extends State<SearchLocation> {
                           Icons.location_pin,
                           color: givenBlue,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -153,7 +152,7 @@ class _SearchLocationState extends State<SearchLocation> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 9.0,
                   ),
                   Padding(
@@ -179,14 +178,14 @@ class _SearchLocationState extends State<SearchLocation> {
                                             borderRadius:
                                                 BorderRadius.circular(30),
                                           ),
-                                          content: BottomUp(),
+                                          content: const BottomUp(),
                                         );
                                       });
                                 }
                               });
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 14.0,
                           ),
                           Text(
@@ -199,12 +198,12 @@ class _SearchLocationState extends State<SearchLocation> {
                           )
                         ]),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 9.0,
                   ),
                   Container(
-                    margin: EdgeInsets.all(8.0),
-                    padding: EdgeInsets.all(8.0),
+                    margin: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     height: 70.0,
                     decoration: BoxDecoration(color: HexColor('#ffffff')),
                     child: Row(
@@ -213,7 +212,7 @@ class _SearchLocationState extends State<SearchLocation> {
                           Icons.location_pin,
                           color: givenBlue,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         InkWell(
@@ -233,65 +232,42 @@ class _SearchLocationState extends State<SearchLocation> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      width: 300.0,
-                      margin: EdgeInsets.only(left: 40.0),
-                      padding: EdgeInsets.only(bottom: 10.0),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(width: 1.0, color: Colors.black),
-                        ),
-                      ),
-                      child: Text(
-                        "Singh and Singh Eatery",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                    ),
+                  Container(
+                    height: .4 * h,
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: 20,
+                        itemBuilder: (context, counter) {
+                          return Align(
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              width: 300.0,
+                              margin: const EdgeInsets.only(
+                                  left: 45.0, bottom: 15.0),
+                              padding: const EdgeInsets.only(bottom: 10.0),
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                      width: 1.0, color: Colors.black),
+                                ),
+                              ),
+                              child: Text(
+                                "Singh and Singh Eatery",
+                                style: TextStyle(
+                                  color: givenBlue,
+                                  fontFamily: 'OPTICopperplate',
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      width: 300.0,
-                      margin: EdgeInsets.only(left: 40.0),
-                      padding: EdgeInsets.only(bottom: 10.0),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(width: 1.0, color: Colors.black),
-                        ),
-                      ),
-                      child: Text(
-                        "Singh and Singh Eatery",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      width: 300.0,
-                      margin: EdgeInsets.only(left: 40.0),
-                      padding: EdgeInsets.only(bottom: 10.0),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(width: 1.0, color: Colors.black),
-                        ),
-                      ),
-                      child: Text(
-                        "Singh and Singh Eatery",
-                        style: TextStyle(fontSize: 17),
-                      ),
-                    ),
                   ),
                 ],
               )),
