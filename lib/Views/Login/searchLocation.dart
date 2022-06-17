@@ -145,7 +145,7 @@ class _SearchLocationState extends State<SearchLocation> {
                                     builder: (context) => PlacePicker(
                                         "AIzaSyDR4UpsJx8zPYuqGzq1BoWS4YE1J_Qu8E4")));
                             setState(() => _pickedLocation1 =
-                                "${result.name}, ${result.locality}");
+                                "${result.formattedAddress.toString().substring(0, 24)}....");
                           },
                           child: Text(
                             _pickedLocation1,
@@ -228,7 +228,7 @@ class _SearchLocationState extends State<SearchLocation> {
                                     builder: (context) => PlacePicker(
                                         "AIzaSyDR4UpsJx8zPYuqGzq1BoWS4YE1J_Qu8E4")));
                             setState(() => _pickedLocation =
-                                "${result.name}, ${result.locality}");
+                                "${result.formattedAddress.toString().substring(0, 24)}....");
                           },
                           child: Text(
                             _pickedLocation,
