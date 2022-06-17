@@ -56,7 +56,8 @@ dependencies:
   sms_autofill: ^2.2.0
   pin_code_fields: ^7.4.0
   getwidget: ^3.0.1
-  place_picker: ^0.9.20-nullsafety
+  intl: ^0.17.0
+  flutter_google_places_hoc081098: ^1.0.0-nullsafety.1
 
 
 dev_dependencies:

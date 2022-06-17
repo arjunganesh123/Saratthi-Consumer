@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:place_picker/entities/location_result.dart';
-import 'package:place_picker/widgets/place_picker.dart';
+import 'package:saratthi_consumer/Helpers/getLocation.dart';
 import 'package:saratthi_consumer/Views/Login/bottomup.dart';
 
 class SearchLocation extends StatefulWidget {
@@ -15,8 +14,6 @@ class SearchLocation extends StatefulWidget {
 class _SearchLocationState extends State<SearchLocation> {
   bool status = false;
   Color givenBlue = HexColor('#314b5c');
-  late LocationResult Getresult;
-
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
@@ -139,7 +136,8 @@ class _SearchLocationState extends State<SearchLocation> {
                         ),
                         InkWell(
                           onTap: () {
-                            showPlacePicker();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => getLocation()));
                           },
                           child: Text(
                             "Search Arrival locations for Saratthi",
@@ -216,11 +214,10 @@ class _SearchLocationState extends State<SearchLocation> {
                           width: 20,
                         ),
                         InkWell(
-                          onTap: () {
-                            showPlacePicker();
-                          },
+                          onTap: () {},
                           child: Text(
-                            "Input Saratthi Drop Off Locations",
+                            "",
+                            // "Input Saratthi Drop Off Locations",
                             style: TextStyle(
                                 fontSize: 17.0,
                                 fontFamily: 'gillsans',
@@ -272,14 +269,5 @@ class _SearchLocationState extends State<SearchLocation> {
         ),
       ],
     );
-  }
-
-  void showPlacePicker() async {
-    LocationResult result = await Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-            PlacePicker("AIzaSyDR4UpsJx8zPYuqGzq1BoWS4YE1J_Qu8E400")));
-
-    // Handle the result in your way
-    print(result);
   }
 }
