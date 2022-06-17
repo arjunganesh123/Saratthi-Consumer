@@ -1,12 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:saratthi_consumer/Components/Navdrawer.dart';
-import 'package:saratthi_consumer/Views/Login/newuser.dart';
-import 'package:saratthi_consumer/Views/Login/notification.dart';
-import 'package:saratthi_consumer/Views/Login/referandearn.dart';
-import 'package:saratthi_consumer/Views/Login/splash.dart';
-
-import 'Views/Login/bottomup.dart';
+import 'Views/Login/paymentsPage.dart';
 import 'Views/Login/searchLocation.dart';
 
 void main() async {
@@ -37,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: splash(),
+      home: PaymentsPage(),
     );
   }
 }
