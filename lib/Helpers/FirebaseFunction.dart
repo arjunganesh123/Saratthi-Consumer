@@ -11,10 +11,10 @@ class StartupLogic {
         stream: _auth.authStateChanges(),
         builder: (BuildContext ctx, snapshot) {
           if (snapshot.hasData) {
-            return Design();
+            return const Design();
           }
 
-          return Join();
+          return const Join();
         });
   }
 }

@@ -13,8 +13,8 @@ class MyCustomRoute<T> extends MaterialPageRoute<T> {
     // just return child.)
     return SlideTransition(
       child: child,
-      position: new Tween<Offset>(
-        begin: Offset(dx, dy),
+      position: Tween<Offset>(
+        begin: const Offset(dx, dy),
         end: Offset.zero,
       ).animate(animation),
     );

@@ -26,13 +26,13 @@ class _JoinState extends State<Join> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Color.fromRGBO(247, 247, 247, 1),
+        backgroundColor: const Color.fromRGBO(247, 247, 247, 1),
         body: Center(
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   width: 95 * w,
                   height: 48 * h,
                   decoration: BoxDecoration(
@@ -42,7 +42,7 @@ class _JoinState extends State<Join> {
                         width: 5,
                       )),
                   child: Padding(
-                    padding: EdgeInsets.all(6.0),
+                    padding: const EdgeInsets.all(6.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Card(
@@ -74,7 +74,7 @@ class _JoinState extends State<Join> {
                                 fontFamily: "Alex_Brush",
                                 color: givenBlue)),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -84,7 +84,7 @@ class _JoinState extends State<Join> {
                                   color: givenBlue, fontFamily: 'gillsans'),
                             ),
                           ]),
-                      SizedBox(height: 2),
+                      const SizedBox(height: 2),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -99,7 +99,7 @@ class _JoinState extends State<Join> {
                 ),
                 Container(
                   width: 85 * w,
-                  margin: EdgeInsets.only(top: 40.0),
+                  margin: const EdgeInsets.only(top: 40.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -108,7 +108,7 @@ class _JoinState extends State<Join> {
                         child: CircleAvatar(
                           backgroundColor: givenBlue,
                           radius: 15,
-                          child: Icon(
+                          child: const Icon(
                             FontAwesomeIcons.phone,
                             color: Colors.white,
                             size: 12,
@@ -124,7 +124,7 @@ class _JoinState extends State<Join> {
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   color: givenBlue,
                                   width: 3,
@@ -132,7 +132,7 @@ class _JoinState extends State<Join> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 borderSide: BorderSide(
                                   color: givenBlue,
                                   width: 3,

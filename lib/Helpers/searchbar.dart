@@ -75,7 +75,7 @@ class _searchBarState extends State<searchBar> {
                   //form google_maps_webservice package
                   final plist = GoogleMapsPlaces(
                     apiKey: googleApikey,
-                    apiHeaders: await GoogleApiHeaders().getHeaders(),
+                    apiHeaders: await const GoogleApiHeaders().getHeaders(),
                     //from google_api_headers package
                   );
                   String placeid = place.placeId ?? "0";
@@ -91,17 +91,17 @@ class _searchBarState extends State<searchBar> {
                 }
               },
               child: Padding(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: Card(
                   child: Container(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       width: MediaQuery.of(context).size.width - 40,
                       child: ListTile(
                         title: Text(
                           location,
-                          style: TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 18),
                         ),
-                        trailing: Icon(Icons.search),
+                        trailing: const Icon(Icons.search),
                         dense: true,
                       )),
                 ),

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'Views/Login/paymentsPage.dart';
-import 'Views/Login/searchLocation.dart';
+import 'package:saratthi_consumer/Helpers/getLocation.dart';
+import 'Views/Login/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: PaymentsPage(),
+      home: splash(),
     );
   }
 }

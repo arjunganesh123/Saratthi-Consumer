@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
-  LatLng _initialcameraposition = const LatLng(28.7041, 77.1025);
+  final LatLng _initialcameraposition = const LatLng(28.7041, 77.1025);
   late GoogleMapController _controller;
   Location _location = Location();
   final Set<Marker> _markers = Set();
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
       setState(() {
         _markers.add(
           Marker(
-            markerId: MarkerId('newyork'),
+            markerId: const MarkerId('newyork'),
             position: LatLng(l.latitude!, l.longitude!),
           ),
         );
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldState,
-      drawer: NavDrawer(),
+      drawer: const NavDrawer(),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(60.0),
                     child: Container(
                       width: 50,
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       height: 50,
                       color: givenBlue,
                       child: Image.asset(
@@ -126,19 +126,17 @@ class _HomeState extends State<Home> {
                                 itemCount: 10,
                                 itemBuilder: (context, counter) {
                                   return Padding(
-                                    padding: EdgeInsets.only(left: 20),
+                                    padding: const EdgeInsets.only(left: 20),
                                     child: Stack(
                                       children: [
-                                        Container(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(60),
-                                            child: Image.asset(
-                                              'assets/Car_Make-Brands/Ford.png',
-                                              height: w * .17,
-                                              width: w * .17,
-                                              fit: BoxFit.fitWidth,
-                                            ),
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(60),
+                                          child: Image.asset(
+                                            'assets/Car_Make-Brands/Ford.png',
+                                            height: w * .17,
+                                            width: w * .17,
+                                            fit: BoxFit.fitWidth,
                                           ),
                                         ),
                                         Positioned(
@@ -159,8 +157,8 @@ class _HomeState extends State<Home> {
                             Center(
                               child: Container(
                                 height: 60.0,
-                                margin: EdgeInsets.only(top: 10.0),
-                                padding: EdgeInsets.all(15.0),
+                                margin: const EdgeInsets.only(top: 10.0),
+                                padding: const EdgeInsets.all(15.0),
                                 decoration: BoxDecoration(
                                   color: Colors.white24,
                                   borderRadius: BorderRadius.circular(6.0),
@@ -176,7 +174,7 @@ class _HomeState extends State<Home> {
                                           context: context,
                                           // elevation: 10.0,
                                           builder: (context) {
-                                            return FractionallySizedBox(
+                                            return const FractionallySizedBox(
                                               heightFactor: .8,
                                               child: SearchLocation(),
                                             );
@@ -184,11 +182,11 @@ class _HomeState extends State<Home> {
                                     },
                                     child: Row(
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 5.0,
                                         ),
-                                        Icon(Icons.search),
-                                        SizedBox(
+                                        const Icon(Icons.search),
+                                        const SizedBox(
                                           width: 10.0,
                                         ),
                                         Text(

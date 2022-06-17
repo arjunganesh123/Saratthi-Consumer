@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:saratthi_consumer/Views/Login/notification.dart';
+import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
 
 import '../Views/Login/referandearn.dart';
 
@@ -68,13 +69,11 @@ class NavDrawer extends StatelessWidget {
                         const SizedBox(
                           width: 40.0,
                         ),
-                        Container(
-                          child: Image.asset(
-                            'assets/Icons/026-pencil.png',
-                            color: givenBlue,
-                            width: 25,
-                            height: 25,
-                          ),
+                        Image.asset(
+                          'assets/Icons/026-pencil.png',
+                          color: givenBlue,
+                          width: 25,
+                          height: 25,
                         )
                       ],
                     )),
@@ -111,7 +110,7 @@ class NavDrawer extends StatelessWidget {
                               border:
                                   Border.all(color: Colors.white, width: 2.0)),
                           child: GFProgressBar(
-                            percentage: 1,
+                            percentage: .2,
                             lineHeight: 5,
                             alignment: MainAxisAlignment.spaceBetween,
                             backgroundColor: Colors.white,
@@ -138,7 +137,10 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  onTap: () => {},
+                  onTap: () => {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => PaymentsPage())),
+                  },
                 ),
                 ListTile(
                   leading: Image.asset(
@@ -172,7 +174,6 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => NotificationPage(),

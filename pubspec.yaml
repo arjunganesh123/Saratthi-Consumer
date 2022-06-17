@@ -58,6 +58,11 @@ dependencies:
   getwidget: ^3.0.1
   intl: ^0.17.0
   flutter_google_places_hoc081098: ^1.0.0-nullsafety.1
+  place_picker: ^0.9.20-nullsafety
+  map_location_picker: ^0.0.2
+  flutter_localizations:
+    sdk: flutter
+
 
 
 dev_dependencies:

@@ -45,7 +45,7 @@ class _VerifyState extends State<Verify> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Color.fromRGBO(247, 247, 247, 1),
+        backgroundColor: const Color.fromRGBO(247, 247, 247, 1),
         body: Stack(
           children: <Widget>[
             Positioned(
@@ -84,13 +84,13 @@ class _VerifyState extends State<Verify> {
                     child: Column(children: [
                       const SizedBox(height: 20),
                       Container(
-                        margin: EdgeInsets.all(5.0),
+                        margin: const EdgeInsets.all(5.0),
                         child: Column(
                           children: [
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20.0,
                                   ),
                                   Text(
@@ -105,12 +105,12 @@ class _VerifyState extends State<Verify> {
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20.0,
                                   ),
                                   Text(
                                     "number (${widget.phNumber.toString()})",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 18.5,
                                         color: Color.fromARGB(255, 48, 77, 49),
                                         fontFamily: 'gillsans'),
@@ -121,13 +121,13 @@ class _VerifyState extends State<Verify> {
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        margin: EdgeInsets.only(top: 10.0),
+                        margin: const EdgeInsets.only(top: 10.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: InkWell(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Join()));
+                                  builder: (context) => const Join()));
                             },
                             child: Row(children: [
                               SizedBox(width: w * 7),
@@ -143,11 +143,12 @@ class _VerifyState extends State<Verify> {
                                 label: "Send OTP Again",
                                 timeOutInSeconds: 30,
                                 onPressed: () {},
-                                disabledColor: Color.fromRGBO(247, 247, 247, 1),
+                                disabledColor:
+                                    const Color.fromRGBO(247, 247, 247, 1),
                                 buttonType: ButtonType.TextButton,
-                                disabledTextStyle: new TextStyle(
-                                    fontSize: 12.0, color: givenBlue),
-                                activeTextStyle: new TextStyle(
+                                disabledTextStyle:
+                                    TextStyle(fontSize: 12.0, color: givenBlue),
+                                activeTextStyle: const TextStyle(
                                     fontSize: 12.0,
                                     color: Color.fromARGB(255, 243, 124, 33)),
                               ),
@@ -229,7 +230,7 @@ class _VerifyState extends State<Verify> {
                           print("Verification id is =${widget.VerificationId}");
                           verifyOTP(widget.VerificationId.toString());
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: 28 * w,
                           child: const Center(
                             child: Text(
@@ -258,7 +259,7 @@ class _VerifyState extends State<Verify> {
       if (value.user != null) {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => Design()),
+            MaterialPageRoute(builder: (context) => const Design()),
             (route) => false);
       }
       print("You are logged in successfully");
