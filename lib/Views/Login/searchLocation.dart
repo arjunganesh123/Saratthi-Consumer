@@ -182,11 +182,16 @@ class _SearchLocationState extends State<SearchLocation> {
                                         return AlertDialog(
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(30),
+                                                BorderRadius.circular(20),
                                           ),
                                           content: const BottomUp(),
                                         );
-                                      });
+                                      }).then((val) {
+                                    setState(() {
+                                      status = val;
+                                    });
+                                  });
+                                  ;
                                 }
                               });
                             },

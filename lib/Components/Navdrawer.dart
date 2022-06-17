@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
+import 'package:progress_indicator/progress_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:saratthi_consumer/Views/Login/notification.dart';
 import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
@@ -99,23 +99,28 @@ class NavDrawer extends StatelessWidget {
                         height: .5 * h,
                       ),
                       Container(
-                          margin: EdgeInsets.only(
-                              left: 2 * w, right: 2 * w, bottom: 2 * w),
-                          padding: EdgeInsets.zero,
-                          // color: Colors.white,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(50.0)),
-                              border:
-                                  Border.all(color: Colors.white, width: 2.0)),
-                          child: GFProgressBar(
-                            percentage: .2,
-                            lineHeight: 5,
-                            alignment: MainAxisAlignment.spaceBetween,
-                            backgroundColor: Colors.white,
-                            progressBarColor: givenBlue,
-                          )),
+                        margin: EdgeInsets.only(
+                            left: 2 * w, right: 2 * w, bottom: 2 * w),
+                        padding: EdgeInsets.zero,
+                        // color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(50.0)),
+                            border:
+                                Border.all(color: Colors.white, width: 2.0)),
+                        child: BarProgress(
+                          percentage: 30.0,
+                          backColor: Colors.grey,
+                          gradient:
+                              LinearGradient(colors: [Colors.blue, Colors.red]),
+                          showPercentage: true,
+                          textStyle:
+                              TextStyle(color: Colors.orange, fontSize: 70),
+                          stroke: 40,
+                          round: true,
+                        ),
+                      ),
                     ],
                   ),
                 ),

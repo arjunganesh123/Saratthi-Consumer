@@ -7,10 +7,12 @@ class BottomUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var w = MediaQuery.of(context).size.width / 100;
+    var h = MediaQuery.of(context).size.height / 100;
     return Container(
-      padding: const EdgeInsets.only(top: 15),
-      height: MediaQuery.of(context).size.height / 2.3,
-      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.only(top: 15),
+      height: 50 * h,
+      width: 100 * w,
       color: const Color(0xFFFFFFFF),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,21 +30,21 @@ class BottomUp extends StatelessWidget {
               'If all the passengers for the entire ride will be female.\n',
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 17.0,
                   color: Color(0xFF314b5c),
                   fontFamily: 'gillsans')),
           const Text(
               'The complete duration of the ride will not be more than 4 hr.\n',
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 17.0,
                   color: Color(0xFF314b5c),
                   fontFamily: 'gillsans')),
           const Text(
               'Kindly note that the female drivers have the right to deny the ride in case of above conditions are not fulfilled or destination of the ride is marked "unsafe for female" within our system.\n\n',
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 17.0,
                   color: Color(0xFF314b5c),
                   fontFamily: 'gillsans')),
           Row(
@@ -57,7 +59,7 @@ class BottomUp extends StatelessWidget {
                   backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context, false);
                 },
                 child: const SizedBox(
                   width: 70,
@@ -67,7 +69,7 @@ class BottomUp extends StatelessWidget {
                       "CANCEL",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 8,
+                          fontSize: 8.5,
                           letterSpacing: 1,
                           fontWeight: FontWeight.bold,
                           fontFamily: "OPTICopperplate"),
@@ -75,8 +77,8 @@ class BottomUp extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: w * 15,
               ),
               ElevatedButton(
                 style: ButtonStyle(
@@ -88,7 +90,7 @@ class BottomUp extends StatelessWidget {
                       MaterialStateProperty.all(const Color(0xFF314b5c)),
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context, true);
                 },
                 child: const SizedBox(
                   width: 70,
