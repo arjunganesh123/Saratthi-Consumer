@@ -351,7 +351,7 @@ class _PaymentsPageState extends State<PaymentsPage> {
                       'assets/Icons/027-link.png',
                       width: 20,
                       height: 20,
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                     ),
                   ],
                 ),
