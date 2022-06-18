@@ -1,10 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:saratthi_consumer/Helpers/getLocation.dart';
-import 'package:saratthi_consumer/Views/Login/notification.dart';
-import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
-import 'package:saratthi_consumer/Views/Login/referandearn.dart';
-import 'package:saratthi_consumer/Views/Login/support.dart';
 import 'Views/Login/splash.dart';
 
 void main() async {

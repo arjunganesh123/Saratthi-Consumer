@@ -187,7 +187,7 @@ class _DesignState extends State<Design> {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Home(logo: car_detail),
+                        builder: (context) => Home(car_detail),
                       ));
                     },
                     child: SizedBox(

@@ -9,8 +9,7 @@ import '../../Helpers/change.dart';
 
 class Home extends StatefulWidget {
   List<Change2> logo = <Change2>[];
-  Home({Key? key, required List<Change2> logo}) : super(key: key);
-
+  Home(List<Change2> this.logo, {Key? key}) : super(key: key);
   @override
   State<Home> createState() => _HomeState();
 }
@@ -42,7 +41,6 @@ class _HomeState extends State<Home> {
       );
     });
   }
-
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
@@ -133,7 +131,7 @@ class _HomeState extends State<Home> {
                                           borderRadius:
                                               BorderRadius.circular(60),
                                           child: Image.asset(
-                                            'assets/Car_Make-Brands/Ford.png',
+                                            widget.logo[counter].image,
                                             height: w * .17,
                                             width: w * .17,
                                             fit: BoxFit.fitWidth,
@@ -146,7 +144,7 @@ class _HomeState extends State<Home> {
                                               'assets/Icons/001-gearshift.png',
                                               width: 15.0,
                                               height: 15.0,
-                                              color: Colors.lightGreen),
+                                              color: widget.logo[counter].changecolor),
                                         ),
                                       ],
                                     ),
