@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:saratthi_consumer/Views/Login/selectGeatType.dart';
 import '../../Helpers/change.dart';
 import 'Home.dart';
+import 'carDetails.dart';
 
 class Design extends StatefulWidget {
   const Design({Key? key}) : super(key: key);
@@ -15,7 +16,6 @@ class _DesignState extends State<Design> {
   bool status = false;
   final Color givenBlue = HexColor('#314b5c');
   List<Change2> car_detail = <Change2>[];
-  String imgUr = 'assets/Car_Make-Brands/bmw.png';
   List<Change> car_logo = <Change>[
     Change(
       image: 'assets/Car_Make-Brands/Audi.png',
@@ -71,6 +71,7 @@ class _DesignState extends State<Design> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: TextButton(
           onPressed: () {},
@@ -149,6 +150,7 @@ class _DesignState extends State<Design> {
                                   context: context,
                                   builder: (context) {
                                     return AlertDialog(
+                                      backgroundColor: Color(0xFFF7F7F7),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
@@ -163,7 +165,7 @@ class _DesignState extends State<Design> {
                                     car_detail.add(
                                       Change2(
                                         image: car_logo[counter].image,
-                                        changecolor: HexColor('#00FF00'),
+                                        changecolor: Colors.lightGreen,
                                       ),
                                     );
                                   } else {
@@ -204,7 +206,7 @@ class _DesignState extends State<Design> {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Home(logo: imgUr),
+                        builder: (context) => Home(car_detail),
                       ));
                     },
                     child: SizedBox(
@@ -292,11 +294,26 @@ class Grid {
                 const SizedBox(
                   width: 15,
                 ),
-                Image.asset(
-                  'assets/Icons/002-options.png',
-                  color: givenBlue,
-                  height: 20,
-                  width: 20,
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            backgroundColor: Color(0xFFF7F7F7),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            content: const CarDetails(),
+                          );
+                        }).then((value) => null);
+                  },
+                  child: Image.asset(
+                    'assets/Icons/002-options.png',
+                    color: givenBlue,
+                    height: 20,
+                    width: 20,
+                  ),
                 ),
               ],
             ),

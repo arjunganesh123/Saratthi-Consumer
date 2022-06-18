@@ -9,8 +9,8 @@ import '../../Helpers/change.dart';
 
 class Home extends StatefulWidget {
   // List<Change2> logo = <Change2>[];
-  String logo = "";
-  Home({Key? key, required String logo}) : super(key: key);
+  List<Change2> logo = <Change2>[];
+  Home(List<Change2> this.logo, {Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -132,12 +132,12 @@ class _HomeState extends State<Home> {
                                       children: [
                                         ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(60),
+                                              BorderRadius.circular(80),
                                           child: Image.asset(
-                                            widget.logo,
-                                            height: w * .17,
-                                            width: w * .17,
-                                            fit: BoxFit.fitWidth,
+                                            widget.logo[counter].image,
+                                            height: 55,
+                                            width: 55,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                         Positioned(
@@ -147,7 +147,8 @@ class _HomeState extends State<Home> {
                                               'assets/Icons/001-gearshift.png',
                                               width: 15.0,
                                               height: 15.0,
-                                              color: Colors.lightGreen),
+                                              color: widget
+                                                  .logo[counter].changecolor),
                                         ),
                                       ],
                                     ),
