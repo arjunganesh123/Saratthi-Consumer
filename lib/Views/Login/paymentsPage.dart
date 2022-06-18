@@ -13,14 +13,17 @@ class _PaymentsPageState extends State<PaymentsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        backgroundColor: widget.givenBlue,
-        child: const Icon(
-          Icons.keyboard_arrow_left,
-          size: 40,
+      floatingActionButton: SizedBox(
+        height: 40,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          backgroundColor: widget.givenBlue,
+          child: const Icon(
+            Icons.keyboard_arrow_left,
+            size: 40,
+          ),
         ),
       ),
       backgroundColor: Colors.white,
@@ -348,7 +351,7 @@ class _PaymentsPageState extends State<PaymentsPage> {
                       'assets/Icons/027-link.png',
                       width: 20,
                       height: 20,
-                      color: Colors.green,
+                      color: Colors.lightGreen,
                     ),
                   ],
                 ),

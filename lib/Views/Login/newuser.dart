@@ -74,7 +74,7 @@ class _DesignState extends State<Design> {
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: TextButton(
-          onPressed: () {},
+          onPressed: () {Navigator.pop(context);},
           child: Text(
             'BACK',
             style: TextStyle(
