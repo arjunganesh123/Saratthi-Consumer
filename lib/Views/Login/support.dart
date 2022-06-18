@@ -87,7 +87,7 @@ class Support extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
             child: Row(
               children: [
                 Text(
@@ -97,7 +97,7 @@ class Support extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.4,
                 ),
-                Text(
+                const Text(
                   'View All',
                   style: TextStyle(color: Colors.blue),
                 )
@@ -171,7 +171,7 @@ class Support extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Image.asset(
@@ -192,7 +192,7 @@ class Support extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              CircleAvatar(
+                              const CircleAvatar(
                                 radius: 5.0,
                                 backgroundColor: Colors.green,
                               ),
@@ -201,7 +201,7 @@ class Support extends StatelessWidget {
                                 height: 35,
                                 width: 2,
                               ),
-                              CircleAvatar(
+                              const CircleAvatar(
                                 radius: 5.0,
                                 backgroundColor: Colors.red,
                               ),
@@ -235,7 +235,7 @@ class Support extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 12, right: 12),
+            padding: const EdgeInsets.only(left: 12, right: 12),
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0)),
@@ -243,7 +243,7 @@ class Support extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(top: 10, bottom: 10),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.12,
                   color: Colors.white,
@@ -258,16 +258,16 @@ class Support extends StatelessWidget {
                             width: 20,
                             height: 20,
                           ),
-                          Text(
+                          const Text(
                             'Facing issues? Get help',
                             style: TextStyle(color: Colors.blue),
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
-                      Text(
+                      const Text(
                         'View all tickets',
                         style: TextStyle(color: Colors.blue),
                       ),
@@ -296,7 +296,7 @@ class Support extends StatelessWidget {
                 return ElevatedButton(
                   onPressed: (){},
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(20.0),
                         topLeft: Radius.circular(20.0),
@@ -317,7 +317,7 @@ class Support extends StatelessWidget {
                       children: [
                         SizedBox(height: MediaQuery.of(context).size.height*0.08,),
                         Container(width: MediaQuery.of(context).size.width,height: 1,color: Colors.black,),
-                        SizedBox(height: 5,),
+                        const SizedBox(height: 5,),
                         Text(text[index],style: TextStyle(fontSize: 10,color: givenBlue),),
                       ],
                     ),
