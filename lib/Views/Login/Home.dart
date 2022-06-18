@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                               height: 50,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: 10,
+                                itemCount: widget.logo.length,
                                 itemBuilder: (context, counter) {
                                   return Padding(
                                     padding: const EdgeInsets.only(left: 20),
