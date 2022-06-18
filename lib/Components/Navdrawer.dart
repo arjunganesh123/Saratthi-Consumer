@@ -3,6 +3,7 @@ import 'package:progress_indicator/progress_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:saratthi_consumer/Views/Login/notification.dart';
 import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
+import 'package:saratthi_consumer/Views/Login/support.dart';
 
 import '../Views/Login/referandearn.dart';
 
@@ -221,7 +222,9 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  onTap: () => {Navigator.of(context).pop()},
+                  onTap: () => {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Support(),),),
+                  },
                 ),
                 ListTile(
                   leading: Image.asset(
