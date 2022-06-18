@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Views/Login/selectGeatType.dart';
 import '../../Helpers/change.dart';
 import 'Home.dart';
 
@@ -11,8 +12,10 @@ class Design extends StatefulWidget {
 }
 
 class _DesignState extends State<Design> {
+  bool status = false;
   final Color givenBlue = HexColor('#314b5c');
   List<Change2> car_detail = <Change2>[];
+  String imgUr = 'assets/Car_Make-Brands/bmw.png';
   List<Change> car_logo = <Change>[
     Change(
       image: 'assets/Car_Make-Brands/Audi.png',
@@ -142,22 +145,36 @@ class _DesignState extends State<Design> {
                                   width: car_logo[counter].width),
                             ),
                             onPressed: () {
-                              setState(() {
-                                car_logo[counter].changecolor =
-                                    HexColor('#000000');
-                                car_logo[counter].width = 3.0;
-                                car_detail.add(
-                                  Change2(
-                                    image: car_logo[counter].image,
-                                    changecolor: HexColor('#00FF00'),
-                                  ),
-                                );
-                                car_detail.add(
-                                  Change2(
-                                    image: car_logo[counter].image,
-                                    changecolor: HexColor('#808080'),
-                                  ),
-                                );
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      content: const Geartype(),
+                                    );
+                                  }).then((val) {
+                                setState(() {
+                                  // car_logo[counter].changecolor =
+                                  //     HexColor('#000000');
+                                  // car_logo[counter].width = 3.0;
+                                  if (val) {
+                                    car_detail.add(
+                                      Change2(
+                                        image: car_logo[counter].image,
+                                        changecolor: HexColor('#00FF00'),
+                                      ),
+                                    );
+                                  } else {
+                                    car_detail.add(
+                                      Change2(
+                                        image: car_logo[counter].image,
+                                        changecolor: HexColor('#808080'),
+                                      ),
+                                    );
+                                  }
+                                });
                               });
                             },
                             child: ClipRRect(
@@ -187,7 +204,7 @@ class _DesignState extends State<Design> {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Home(logo: car_detail),
+                        builder: (context) => Home(logo: imgUr),
                       ));
                     },
                     child: SizedBox(
@@ -236,8 +253,7 @@ class Grid {
           )),
         ],
       );
-    }
-    else {
+    } else {
       return GridView.builder(
         itemCount: car_detail.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

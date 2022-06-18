@@ -8,8 +8,9 @@ import 'package:saratthi_consumer/Views/Login/searchLocation.dart';
 import '../../Helpers/change.dart';
 
 class Home extends StatefulWidget {
-  List<Change2> logo = <Change2>[];
-  Home({Key? key, required List<Change2> logo}) : super(key: key);
+  // List<Change2> logo = <Change2>[];
+  String logo = "";
+  Home({Key? key, required String logo}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -123,7 +124,7 @@ class _HomeState extends State<Home> {
                               height: 50,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: 10,
+                                itemCount: widget.logo.length,
                                 itemBuilder: (context, counter) {
                                   return Padding(
                                     padding: const EdgeInsets.only(left: 20),
@@ -133,7 +134,7 @@ class _HomeState extends State<Home> {
                                           borderRadius:
                                               BorderRadius.circular(60),
                                           child: Image.asset(
-                                            'assets/Car_Make-Brands/Ford.png',
+                                            widget.logo,
                                             height: w * .17,
                                             width: w * .17,
                                             fit: BoxFit.fitWidth,

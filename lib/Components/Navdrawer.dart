@@ -15,6 +15,7 @@ class NavDrawer extends StatelessWidget {
     var h = MediaQuery.of(context).size.height / 100;
     Color givenBlue = HexColor('#314b5c');
     Color givenBg = HexColor('#f7f7f7');
+    double _givenPecentage = 30.0;
     return Stack(
       children: [
         SizedBox(
@@ -101,8 +102,7 @@ class NavDrawer extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(
                             left: 2 * w, right: 2 * w, bottom: 2 * w),
-                        padding: EdgeInsets.zero,
-                        // color: Colors.white,
+                        padding: EdgeInsets.all(1.0),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
@@ -110,14 +110,13 @@ class NavDrawer extends StatelessWidget {
                             border:
                                 Border.all(color: Colors.white, width: 2.0)),
                         child: BarProgress(
-                          percentage: 30.0,
-                          backColor: Colors.grey,
-                          gradient:
-                              LinearGradient(colors: [Colors.blue, Colors.red]),
-                          showPercentage: true,
-                          textStyle:
-                              TextStyle(color: Colors.orange, fontSize: 70),
-                          stroke: 40,
+                          percentage: _givenPecentage = 30.0,
+                          backColor: Colors.white,
+                          color: givenBlue,
+                          // gradient:
+                          //     LinearGradient(colors: [givenBlue, givenBg]),
+                          showPercentage: false,
+                          stroke: 4,
                           round: true,
                         ),
                       ),
