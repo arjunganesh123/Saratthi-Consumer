@@ -6,8 +6,7 @@ import 'Home.dart';
 import 'carDetails.dart';
 
 class Design extends StatefulWidget {
-  const Design({Key? key}) : super(key: key);
-
+  Design({Key? key}) : super(key: key);
   @override
   State<Design> createState() => _DesignState();
 }
@@ -20,51 +19,61 @@ class _DesignState extends State<Design> {
     Change(
       image: 'assets/Car_Make-Brands/Audi.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/bmw.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/Ford.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/Honda.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/Hyundai.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/Kia.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/Maruti-Suzuki.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/mercedes.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/Tata.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     ),
     Change(
       image: 'assets/Car_Make-Brands/Toyota.png',
       width: 1.0,
+      carModels: ["Model 1", "Model 2", "Model 3"],
       changecolor: HexColor('#FFFFFF'),
     )
   ];
@@ -74,7 +83,9 @@ class _DesignState extends State<Design> {
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: TextButton(
-          onPressed: () {Navigator.pop(context);},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: Text(
             'BACK',
             style: TextStyle(
@@ -164,16 +175,20 @@ class _DesignState extends State<Design> {
                                   if (val) {
                                     car_detail.add(
                                       Change2(
-                                        image: car_logo[counter].image,
-                                        changecolor: Colors.lightGreen,
-                                      ),
+                                          image: car_logo[counter].image,
+                                          carModels:
+                                              car_logo[counter].carModels,
+                                          changecolor: Colors.lightGreen,
+                                          isVisible: true),
                                     );
                                   } else {
                                     car_detail.add(
                                       Change2(
-                                        image: car_logo[counter].image,
-                                        changecolor: HexColor('#808080'),
-                                      ),
+                                          carModels:
+                                              car_logo[counter].carModels,
+                                          image: car_logo[counter].image,
+                                          changecolor: HexColor('#808080'),
+                                          isVisible: false),
                                     );
                                   }
                                 });
@@ -236,8 +251,8 @@ class _DesignState extends State<Design> {
 }
 
 class Grid {
-  static Widget gridd(List car_detail, Color givenBlue) {
-    if (car_detail.isEmpty) {
+  static Widget gridd(List carDetail, Color givenBlue) {
+    if (carDetail.isEmpty) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
@@ -257,7 +272,7 @@ class Grid {
       );
     } else {
       return GridView.builder(
-        itemCount: car_detail.length,
+        itemCount: carDetail.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 2.8,
           mainAxisSpacing: 20,
@@ -276,7 +291,7 @@ class Grid {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(40),
                   child: Image.asset(
-                    car_detail[index].image,
+                    carDetail[index].image,
                     height: 40,
                     width: 40,
                     fit: BoxFit.fitWidth,
@@ -287,7 +302,7 @@ class Grid {
                 ),
                 Image.asset(
                   'assets/Icons/001-gearshift.png',
-                  color: car_detail[index].changecolor,
+                  color: carDetail[index].changecolor,
                   height: 30,
                   width: 30,
                 ),
@@ -304,9 +319,10 @@ class Grid {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            content: const CarDetails(),
+                            content: CarDetails(
+                                itemTypList: carDetail[index].carModels),
                           );
-                        }).then((value) => null);
+                        }).then((val) {});
                   },
                   child: Image.asset(
                     'assets/Icons/002-options.png',

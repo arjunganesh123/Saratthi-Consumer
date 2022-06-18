@@ -1,19 +1,30 @@
 import 'package:flutter/cupertino.dart';
 
-class Change{
+class Change {
   String image;
   double width;
   Color changecolor;
-  Change({required this.image,required this.width,required this.changecolor});
+  List<String> carModels;
+  Change(
+      {required this.image,
+      required this.width,
+      required this.changecolor,
+      required this.carModels});
 }
 
-class Change2{
+class Change2 {
   String image;
+  bool isVisible;
   Color changecolor;
-  Change2({required this.image,required this.changecolor});
+  List<String> carModels;
+  Change2(
+      {required this.image,
+      required this.changecolor,
+      required this.isVisible,
+      required this.carModels});
 }
 
-class Refer{
+class Refer {
   String image;
   Refer({required this.image});
 }

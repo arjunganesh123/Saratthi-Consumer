@@ -19,7 +19,7 @@ class BottomUp extends StatelessWidget {
         children: [
           const Text(
             'Female riders facility id only allowed :-\n',
-            textAlign: TextAlign.justify,
+            textAlign: TextAlign.left,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15.0,
@@ -28,21 +28,21 @@ class BottomUp extends StatelessWidget {
           ),
           const Text(
               'If all the passengers for the entire ride will be female.\n',
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.left,
               style: TextStyle(
                   fontSize: 17.0,
                   color: Color(0xFF314b5c),
                   fontFamily: 'gillsans')),
           const Text(
               'The complete duration of the ride will not be more than 4 hr.\n',
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.left,
               style: TextStyle(
                   fontSize: 17.0,
                   color: Color(0xFF314b5c),
                   fontFamily: 'gillsans')),
           const Text(
               'Kindly note that the female drivers have the right to deny the ride in case of above conditions are not fulfilled or destination of the ride is marked "unsafe for female" within our system.\n\n',
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.left,
               style: TextStyle(
                   fontSize: 17.0,
                   color: Color(0xFF314b5c),

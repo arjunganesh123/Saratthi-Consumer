@@ -259,7 +259,7 @@ class _VerifyState extends State<Verify> {
       if (value.user != null) {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const Design()),
+            MaterialPageRoute(builder: (context) => Design()),
             (route) => false);
       }
       print("You are logged in successfully");
