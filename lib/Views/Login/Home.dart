@@ -8,8 +8,8 @@ import 'package:saratthi_consumer/Views/Login/searchLocation.dart';
 import '../../Helpers/change.dart';
 
 class Home extends StatefulWidget {
-  // List<Change2> logo = <Change2>[];
   List<Change2> logo = <Change2>[];
+
   Home(List<Change2> this.logo, {Key? key}) : super(key: key);
 
   @override
@@ -147,8 +147,7 @@ class _HomeState extends State<Home> {
                                               'assets/Icons/001-gearshift.png',
                                               width: 15.0,
                                               height: 15.0,
-                                              color: widget
-                                                  .logo[counter].changecolor),
+                                              color: widget.logo[counter].changecolor),
                                         ),
                                       ],
                                     ),

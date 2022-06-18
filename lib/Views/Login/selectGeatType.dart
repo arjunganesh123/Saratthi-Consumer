@@ -15,7 +15,7 @@ class _GeartypeState extends State<Geartype> {
 
     return Container(
       padding: EdgeInsets.only(top: 15),
-      height: 27 * h,
+      height: 29 * h,
       width: 100 * w,
       color: const Color(0xFFF7F7F7),
       child: Column(
