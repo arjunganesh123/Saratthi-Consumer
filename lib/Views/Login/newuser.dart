@@ -169,9 +169,9 @@ class _DesignState extends State<Design> {
                                     );
                                   }).then((val) {
                                 setState(() {
-                                  // car_logo[counter].changecolor =
-                                  //     HexColor('#000000');
-                                  // car_logo[counter].width = 3.0;
+                                  car_logo[counter].changecolor =
+                                      HexColor('#000000');
+                                  car_logo[counter].width = 3.0;
                                   if (val) {
                                     car_detail.add(
                                       Change2(
