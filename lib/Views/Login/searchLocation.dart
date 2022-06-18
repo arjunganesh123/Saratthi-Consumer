@@ -39,7 +39,7 @@ class _SearchLocationState extends State<SearchLocation> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black,
-                      blurRadius: 16.0,
+                      blurRadius: 12.0,
                       spreadRadius: .5,
                       offset: Offset(0.7, 0.7),
                     )
@@ -81,7 +81,7 @@ class _SearchLocationState extends State<SearchLocation> {
                               children: [
                                 ClipRRect(
                                   child: Image.asset(
-                                    "assets/Icons/008-home.png",
+                                    "assets/Icons/009-suitcase.png",
                                     height: 20,
                                     width: 20,
                                     color: givenBlue,
@@ -103,7 +103,7 @@ class _SearchLocationState extends State<SearchLocation> {
                               children: [
                                 ClipRRect(
                                   child: Image.asset(
-                                    "assets/Icons/008-home.png",
+                                    "assets/Icons/007-location-pin.png",
                                     height: 20,
                                     width: 20,
                                     color: givenBlue,
@@ -191,7 +191,6 @@ class _SearchLocationState extends State<SearchLocation> {
                                       status = val;
                                     });
                                   });
-                                  ;
                                 }
                               });
                             },

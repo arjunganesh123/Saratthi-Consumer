@@ -63,6 +63,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   progress_indicator: ^0.2.2
+  radio_button_form_field: ^0.0.4-nullsafety.1
 
 
 
@@ -119,7 +120,7 @@ flutter:
     - family: OPTICopperplate
       fonts:
         - asset: fonts/OPTICopperplate.otf
-    - family: Luxia Regular
+    - family: Luxia
       fonts:
         - asset: fonts/Luxia-Regular.otf
   #

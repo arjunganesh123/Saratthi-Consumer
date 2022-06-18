@@ -8,8 +8,10 @@ import 'package:saratthi_consumer/Views/Login/searchLocation.dart';
 import '../../Helpers/change.dart';
 
 class Home extends StatefulWidget {
+  // List<Change2> logo = <Change2>[];
   List<Change2> logo = <Change2>[];
   Home(List<Change2> this.logo, {Key? key}) : super(key: key);
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -41,6 +43,7 @@ class _HomeState extends State<Home> {
       );
     });
   }
+
   @override
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
@@ -129,12 +132,12 @@ class _HomeState extends State<Home> {
                                       children: [
                                         ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(60),
+                                              BorderRadius.circular(80),
                                           child: Image.asset(
                                             widget.logo[counter].image,
-                                            height: w * .17,
-                                            width: w * .17,
-                                            fit: BoxFit.fitWidth,
+                                            height: 55,
+                                            width: 55,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                         Positioned(
@@ -144,7 +147,8 @@ class _HomeState extends State<Home> {
                                               'assets/Icons/001-gearshift.png',
                                               width: 15.0,
                                               height: 15.0,
-                                              color: widget.logo[counter].changecolor),
+                                              color: widget
+                                                  .logo[counter].changecolor),
                                         ),
                                       ],
                                     ),
