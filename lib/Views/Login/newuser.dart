@@ -70,7 +70,7 @@ class _DesignState extends State<Design> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: TextButton(
-          onPressed: () {},
+          onPressed: () {Navigator.pop(context);},
           child: Text(
             'BACK',
             style: TextStyle(
