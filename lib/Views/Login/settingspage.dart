@@ -63,7 +63,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   width: MediaQuery.of(context).size.width * 0.55,
                 ),
                 TextButton(
-                  onPressed: () {  },
+                  onPressed: () {},
                   child: const Text(
                     'Logout',
                     style: TextStyle(
@@ -81,83 +81,158 @@ class _SettingsPageState extends State<SettingsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
-                padding: EdgeInsets.only(left: 20),
-                  child: Text('General',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),)),
+                  padding: EdgeInsets.only(left: 20),
+                  child: Text(
+                    'General',
+                    style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                  )),
               Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.2,top: 10,right: 10,bottom: 10),
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.2,
+                    top: 10,
+                    right: 10,
+                    bottom: 10),
                 child: MaterialButton(
-                  onPressed: () {  },
+                  onPressed: () {},
                   child: SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Profile',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                        Text('+91-9874569872',style: TextStyle(fontSize: 12,fontFamily: 'gillsans',color: Colors.black54),),
+                        Text(
+                          'Profile',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
+                        Text(
+                          '+91-9874569872',
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'gillsans',
+                              color: Colors.black54),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.2,top: 10,right: 10,bottom: 10),
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.2,
+                    top: 10,
+                    right: 10,
+                    bottom: 10),
                 child: MaterialButton(
-                  onPressed: () {  },
+                  onPressed: () {},
                   child: SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Favourites',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                        Text('Manage favourites locations',style: TextStyle(fontSize: 12,fontFamily: 'gillsans',color: Colors.black54),),
+                        Text(
+                          'Favourites',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
+                        Text(
+                          'Manage favourites locations',
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'gillsans',
+                              color: Colors.black54),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.2,top: 10,right: 10,bottom: 10),
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.2,
+                    top: 10,
+                    right: 10,
+                    bottom: 10),
                 child: MaterialButton(
-                  onPressed: () {  },
+                  onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>,),),
+                  },
                   child: SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Preferences',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                        Text('Manage preferences',style: TextStyle(fontSize: 12,fontFamily: 'gillsans',color: Colors.black54),),
+                        Text(
+                          'Preferences',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
+                        Text(
+                          'Manage preferences',
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'gillsans',
+                              color: Colors.black54),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.2,top: 10,right: 10,bottom: 10),
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.2,
+                    top: 10,
+                    right: 10,
+                    bottom: 10),
                 child: MaterialButton(
-                  onPressed: () {  },
+                  onPressed: () {},
                   child: SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Language',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                        Text('Current English',style: TextStyle(fontSize: 12,fontFamily: 'gillsans',color: Colors.black54),),
+                        Text(
+                          'Language',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
+                        Text(
+                          'Current English',
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'gillsans',
+                              color: Colors.black54),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.2,top: 10,right: 10,bottom: 10),
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.2,
+                    top: 10,
+                    right: 10,
+                    bottom: 10),
                 child: MaterialButton(
-                  onPressed: () {  },
+                  onPressed: () {},
                   child: SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('About',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                        Text('Version:1.2.3',style: TextStyle(fontSize: 12,fontFamily: 'gillsans',color: Colors.black54),),
+                        Text(
+                          'About',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
+                        Text(
+                          'Version:1.2.3',
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'gillsans',
+                              color: Colors.black54),
+                        ),
                       ],
                     ),
                   ),
