@@ -245,12 +245,12 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  onTap: () => {
+                  onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => SettingsPage(),
                       ),
-                    ),
+                    );
                   },
                 ),
               ],
