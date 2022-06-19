@@ -8,8 +8,8 @@ import 'package:saratthi_consumer/Views/Login/searchLocation.dart';
 import '../../Helpers/change.dart';
 
 class Home extends StatefulWidget {
+  // List<Change2> logo = <Change2>[];
   List<Change2> logo = <Change2>[];
-
   Home(List<Change2> this.logo, {Key? key}) : super(key: key);
 
   @override
@@ -121,33 +121,52 @@ class _HomeState extends State<Home> {
                               padding:
                                   const EdgeInsets.only(left: 20, right: 20),
                               width: MediaQuery.of(context).size.width,
-                              height: 50,
+                              margin: EdgeInsets.only(bottom: h * .007),
+                              height: 70,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: widget.logo.length,
                                 itemBuilder: (context, counter) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(left: 20),
+                                  return Container(
+                                    margin: EdgeInsets.only(left: 1),
                                     child: Stack(
                                       children: [
                                         ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(80),
+                                              BorderRadius.circular(60),
                                           child: Image.asset(
                                             widget.logo[counter].image,
-                                            height: 55,
-                                            width: 55,
-                                            fit: BoxFit.cover,
+                                            height: 50,
+                                            width: 80,
+                                            // fit: BoxFit.cover,
                                           ),
                                         ),
                                         Positioned(
                                           top: 0,
+                                          right: 15,
+                                          child: Visibility(
+                                            visible:
+                                                widget.logo[counter].isVisible,
+                                            child: Image.asset(
+                                                'assets/Icons/001-gearshift.png',
+                                                width: 15.0,
+                                                height: 15.0,
+                                                color: Colors.lightGreen),
+                                          ),
+                                        ),
+                                        Positioned(
+                                          top: 47,
                                           right: 0,
-                                          child: Image.asset(
-                                              'assets/Icons/001-gearshift.png',
-                                              width: 15.0,
-                                              height: 15.0,
-                                              color: widget.logo[counter].changecolor),
+                                          left: 12,
+                                          child: Container(
+                                            padding: EdgeInsets.only(top: 10.0),
+                                            child: Text(
+                                              "UP 11 T5872",
+                                              style: TextStyle(
+                                                  fontSize: 10,
+                                                  letterSpacing: .1),
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),

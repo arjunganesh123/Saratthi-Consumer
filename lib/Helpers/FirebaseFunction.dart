@@ -11,7 +11,7 @@ class StartupLogic {
         stream: _auth.authStateChanges(),
         builder: (BuildContext ctx, snapshot) {
           if (snapshot.hasData) {
-            return const Design();
+            return Design();
           }
 
           return const Join();

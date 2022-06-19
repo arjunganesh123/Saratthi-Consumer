@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:sms_autofill/sms_autofill.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class CarDetails extends StatefulWidget {
-  const CarDetails({Key? key}) : super(key: key);
+  CarDetails({Key? key, required this.itemTypList}) : super(key: key);
+  List<String> itemTypList;
 
   @override
   State<CarDetails> createState() => _CarDetailsState();
 }
 
 class _CarDetailsState extends State<CarDetails> {
-  List<String>? itemTypList;
   TextEditingController regNumController = TextEditingController();
+  String? _btn2SelectedVal;
+  Color givenBlue = HexColor("#314b5c");
   @override
   Widget build(BuildContext context) {
+    final List<DropdownMenuItem<String>> dropDownMenuItems = widget.itemTypList
+        .map(
+          (String value) => DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          ),
+        )
+        .toList();
     var w = MediaQuery.of(context).size.width / 100;
     var h = MediaQuery.of(context).size.height / 100;
     return Container(
@@ -33,72 +43,51 @@ class _CarDetailsState extends State<CarDetails> {
             height: 20.0,
           ),
           Container(
-            margin: const EdgeInsets.only(bottom: 3),
             decoration: const BoxDecoration(
               border: Border(
                 bottom: BorderSide(width: 1.0),
               ),
             ),
             child: ListTile(
-              title: const Text(""),
-              contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              trailing: DropdownButtonHideUnderline(
-                child: DropdownButton(
-                  isExpanded: false,
-                  value: true,
-                  items: itemTypList?.map((item) {
-                    return const DropdownMenuItem<List>(
-                      child: SizedBox(
-                        width: 150, //expand here
-                        child: Text(
-                          "",
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      // value: item['item_id'],
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      // selectedLeaveType = value;
-                    });
-                  },
-                  hint: const SizedBox(
-                    width: 210, //and here
-                    child: Text(
-                      "Select Car Model",
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        color: Color(0xFF314b5c),
-                        fontFamily: 'gillsans',
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  style: const TextStyle(
-                      color: Colors.black, decorationColor: Colors.red),
+              leading: DropdownButton<String>(
+                value: _btn2SelectedVal,
+                elevation: 0,
+                iconEnabledColor: givenBlue,
+                hint: Text(
+                  "Select car Models           ",
+                  style: TextStyle(
+                      color: givenBlue, fontFamily: 'gillsans', fontSize: 17),
                 ),
+                style: TextStyle(color: givenBlue, fontFamily: 'gillsans'),
+                onChanged: (String? newValue) {
+                  if (newValue != null) {
+                    setState(() => _btn2SelectedVal = newValue);
+                  }
+                },
+                items: dropDownMenuItems,
               ),
             ),
           ),
           const SizedBox(
             height: 10.0,
           ),
-          TextFormField(
-            controller: regNumController,
-            decoration: const InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF314b5c))),
-                hintText: "Enter Car Registration Number",
-                hintStyle: TextStyle(
-                  fontSize: 17.0,
-                  color: Color(0xFF314b5c),
-                  fontFamily: 'gillsans',
-                )),
-            style: const TextStyle(
-              fontSize: 17.0,
-              color: Color(0xFF314b5c),
-              fontFamily: 'gillsans',
+          Container(
+            child: TextFormField(
+              controller: regNumController,
+              decoration: const InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF314b5c))),
+                  hintText: "Enter Car Registration Number",
+                  hintStyle: TextStyle(
+                    fontSize: 17.0,
+                    color: Color(0xFF314b5c),
+                    fontFamily: 'gillsans',
+                  )),
+              style: const TextStyle(
+                fontSize: 17.0,
+                color: Color(0xFF314b5c),
+                fontFamily: 'gillsans',
+              ),
             ),
           ),
           const SizedBox(
@@ -147,7 +136,7 @@ class _CarDetailsState extends State<CarDetails> {
                       MaterialStateProperty.all(const Color(0xFF314b5c)),
                 ),
                 onPressed: () {
-                  Navigator.pop(context, true);
+                  Navigator.pop(context, regNumController.text.toString());
                 },
                 child: const SizedBox(
                   width: 70,
