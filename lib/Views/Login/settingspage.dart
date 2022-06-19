@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Views/Login/preferencespage.dart';
 
 class SettingsPage extends StatefulWidget {
   final Color givenBlue = HexColor('#314b5c');
@@ -118,7 +118,9 @@ class _SettingsPageState extends State<SettingsPage> {
               Padding(
                 padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.2,top: 10,right: 10,bottom: 10),
                 child: MaterialButton(
-                  onPressed: () {  },
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PreferencesPage()));
+                  },
                   child: SizedBox(
                     height: 40,
                     child: Column(
