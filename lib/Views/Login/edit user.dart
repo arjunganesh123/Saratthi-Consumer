@@ -9,6 +9,7 @@ class EditUser extends StatefulWidget {
 }
 
 class _EditUserState extends State<EditUser> {
+  bool editvalue=false;
   String dropdownvalue='Male';
   final Color givenBlue = HexColor('#314b5c');
   @override
@@ -90,10 +91,18 @@ class _EditUserState extends State<EditUser> {
                     ),
                     const SizedBox(width: 40,),
                     TextButton(
-                        onPressed: () {  },
+                        onPressed: () {
+                          setState(() {
+                            editvalue=true;
+                          });
+                        },
                         child: const Text('Edit',style: TextStyle(fontSize: 17,fontFamily: 'gillsans',color: Colors.black),)),
                     TextButton(
-                        onPressed: () {  },
+                        onPressed: () {
+                          setState(() {
+                            editvalue=false;
+                          });
+                        },
                         child: const Text('Save',style: TextStyle(fontSize: 17,fontFamily: 'gillsans',color: Colors.black),)),
                   ],
                 ),
@@ -110,8 +119,9 @@ class _EditUserState extends State<EditUser> {
                     const SizedBox(width: 20,),
                     SizedBox(
                       height: 30,width: MediaQuery.of(context).size.width*0.6,
-                      child: const TextField(
-                        decoration: InputDecoration(
+                      child: TextField(
+                        enabled: editvalue,
+                        decoration: const InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey,width: 2.0),
                           ),
@@ -138,8 +148,9 @@ class _EditUserState extends State<EditUser> {
                     const SizedBox(width: 20,),
                     SizedBox(
                       height: 30,width: MediaQuery.of(context).size.width*0.6,
-                      child: const TextField(
-                        decoration: InputDecoration(
+                      child: TextField(
+                        enabled: editvalue,
+                        decoration:const InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey,width: 2.0),
                           ),
@@ -204,8 +215,9 @@ class _EditUserState extends State<EditUser> {
                     const SizedBox(width: 20,),
                     SizedBox(
                       height: 30,width: MediaQuery.of(context).size.width*0.6,
-                      child: const TextField(
-                        decoration: InputDecoration(
+                      child: TextField(
+                        enabled: editvalue,
+                        decoration: const InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey,width: 2.0),
                           ),
