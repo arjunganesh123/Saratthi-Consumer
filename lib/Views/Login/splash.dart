@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:saratthi_consumer/Views/Login/join.dart';
 
 import '../../Helpers/FirebaseFunction.dart';
+import '../../Helpers/shared_services.dart';
 import '../../Helpers/transition.dart';
+import 'newuser.dart';
 
 class splash extends StatefulWidget {
   @override
@@ -11,16 +13,24 @@ class splash extends StatefulWidget {
 }
 
 class _splashState extends State<splash> {
+  int? phoneNo;
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _asyncMethod();
+    });
     Timer(
         Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(
-              new MyCustomRoute(
-                builder: (context) => StartupLogic().getLandingPage(context),
-              ),
-            ));
+        () => phoneNo != null
+            ? Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Design()))
+            : Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Design())));
+  }
+
+  _asyncMethod() async {
+    phoneNo = await getPhoneFromLocal();
   }
 
   @override

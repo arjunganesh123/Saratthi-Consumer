@@ -2,12 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Services/customer_registration_Service.dart';
 import 'package:saratthi_consumer/Views/Login/verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:saratthi_consumer/routes/routes.dart';
+
+import '../../Helpers/shared_services.dart';
+import '../../Helpers/validation_mixin.dart';
+import '../../Services/Customer_Registeration.dart';
 
 class Join extends StatefulWidget {
   const Join({Key? key}) : super(key: key);
-
+  static String routeName = "/join";
   @override
   State<Join> createState() => _JoinState();
 }
@@ -16,8 +22,16 @@ class _JoinState extends State<Join> {
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController phone = TextEditingController();
   String verificationID = "";
-  String phNumber = "";
+  String? phNumber;
   Color givenBlue = HexColor('#314b5c');
+  final _formPhoneKey = GlobalKey<FormState>();
+  CustomerRegistration? customerRegistration;
+  @override
+  void initState() {
+    super.initState();
+    customerRegistration = CustomerRegistration();
+  }
+
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width / 100;
@@ -97,79 +111,112 @@ class _JoinState extends State<Join> {
                     ],
                   ),
                 ),
-                Container(
-                  width: 85 * w,
-                  margin: const EdgeInsets.only(top: 40.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(right: 2 * w),
-                        child: CircleAvatar(
-                          backgroundColor: givenBlue,
-                          radius: 15,
-                          child: const Icon(
-                            FontAwesomeIcons.phone,
-                            color: Colors.white,
-                            size: 12,
+                Form(
+                  key: _formPhoneKey,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 85 * w,
+                        margin: const EdgeInsets.only(top: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(right: 2 * w),
+                              child: const CircleAvatar(
+                                backgroundColor: Colors.black,
+                                radius: 15,
+                                child: Icon(
+                                  FontAwesomeIcons.phone,
+                                  color: Colors.white,
+                                  size: 12,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin:
+                                  EdgeInsets.only(top: 2 * h, bottom: 2 * h),
+                              width: 70 * w,
+                              child: TextFormField(
+                                controller: phone,
+                                style: const TextStyle(fontFamily: 'Luxia'),
+                                keyboardType: TextInputType.phone,
+                                decoration: InputDecoration(
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                        color: givenBlue,
+                                        width: 3,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                        color: givenBlue,
+                                        width: 3,
+                                      ),
+                                    ),
+                                    labelText: 'Mobile No',
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Luxia Regular',
+                                        color: givenBlue)),
+                                validator: (phoneNo) {
+                                  if (InputValidationMixin.isPhoneValid(
+                                      phoneNo: phoneNo))
+                                    return null;
+                                  else
+                                    return 'Enter a valid Phone No';
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          )),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                        ),
+                        onPressed: () async {
+                          if (_formPhoneKey.currentState!.validate()) {
+                            _formPhoneKey.currentState!.save();
+                            print(phone.text);
+                            var response = await registerCustomer(
+                                PhoneNo: int.parse(phone.text));
+                            print(response["statusdesc"]);
+                            putPhoneToLocal(
+                              phoneNo: int.parse(phone.text),
+                            );
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Verify(
+                                phNumber: phone.text.toString(),
+                              ),
+                            ));
+                          } else {
+                            print("Auth Failed");
+                          }
+                          // loginWithPhone();
+                          // print(verificationID);
+                        },
+                        child: Container(
+                          width: 25 * w,
+                          child: Center(
+                            child: Text("NEXT",
+                                style: TextStyle(
+                                    color: givenBlue,
+                                    fontSize: 15,
+                                    fontFamily: "OPTICopperplate")),
                           ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 2 * h, bottom: 2 * h),
-                        width: 70 * w,
-                        child: TextField(
-                          controller: phone,
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                borderSide: BorderSide(
-                                  color: givenBlue,
-                                  width: 3,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                borderSide: BorderSide(
-                                  color: givenBlue,
-                                  width: 3,
-                                ),
-                              ),
-                              labelText: 'Mobile No',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Luxia Regular',
-                                  color: givenBlue)),
-                        ),
-                      )
                     ],
-                  ),
-                ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                    )),
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                  ),
-                  onPressed: () {
-                    loginWithPhone();
-                    print(verificationID);
-                  },
-                  child: Container(
-                    width: 25 * w,
-                    child: Center(
-                      child: Text(
-                        "NEXT",
-                        style: TextStyle(
-                            color: givenBlue,
-                            fontSize: 15,
-                            fontFamily: "OPTICopperplate"),
-                      ),
-                    ),
                   ),
                 ),
               ],
@@ -180,36 +227,36 @@ class _JoinState extends State<Join> {
     );
   }
 
-  void loginWithPhone() async {
-    String phNumber = phone.text.toString();
-    // Navigator.of(context).push(
-    // MaterialPageRoute(builder: (context) => Verify()));
-    auth.verifyPhoneNumber(
-      phoneNumber: "+91${phone.text}",
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        await auth.signInWithCredential(credential).then((value) {
-          print("You are logged in successfully");
-        });
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        print(e.message);
-      },
-      codeSent: (String verificationId, int? resendToken) {
-        verificationID = verificationId;
-        print(verificationId);
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => Verify(
-              phNumber: phNumber,
-              VerificationId: verificationID,
-            ),
-          ),
-        );
-        setState(() {
-          verificationID = verificationId;
-        });
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-  }
+  // void loginWithPhone() async {
+  //   String phNumber = phone.text.toString();
+  //   // Navigator.of(context).push(
+  //   // MaterialPageRoute(builder: (context) => Verify()));
+  //   auth.verifyPhoneNumber(
+  //     phoneNumber: "+91${phone.text}",
+  //     verificationCompleted: (PhoneAuthCredential credential) async {
+  //       await auth.signInWithCredential(credential).then((value) {
+  //         print("You are logged in successfully");
+  //       });
+  //     },
+  //     verificationFailed: (FirebaseAuthException e) {
+  //       print(e.message);
+  //     },
+  //     codeSent: (String verificationId, int? resendToken) {
+  //       verificationID = verificationId;
+  //       print(verificationId);
+  //       Navigator.of(context).push(
+  //         MaterialPageRoute(
+  //           builder: (context) => Verify(
+  //             phNumber: phNumber,
+  //             VerificationId: verificationID,
+  //           ),
+  //         ),
+  //       );
+  //       setState(() {
+  //         verificationID = verificationId;
+  //       });
+  //     },
+  //     codeAutoRetrievalTimeout: (String verificationId) {},
+  //   );
+  // }
 }

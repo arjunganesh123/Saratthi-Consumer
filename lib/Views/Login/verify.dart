@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:saratthi_consumer/Components/custom_text.dart';
@@ -10,12 +9,17 @@ import 'package:saratthi_consumer/Views/Login/newuser.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:timer_button/timer_button.dart';
 
+import '../../Helpers/shared_services.dart';
+import '../../Services/customer_registration_Service.dart';
+import '../../Services/customer_verify_profile.dart';
+import '../../Services/verify_customer_services.dart';
 import 'join.dart';
 
 class Verify extends StatefulWidget {
   Verify({Key? key, this.phNumber, this.VerificationId}) : super(key: key);
   String? phNumber;
   String? VerificationId;
+  static String routeName = "/verify";
 
   @override
   State<Verify> createState() => _VerifyState();
@@ -25,15 +29,16 @@ class _VerifyState extends State<Verify> {
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController otp = TextEditingController();
   Color givenBlue = HexColor('#314b5c');
-  String _otpCode = "";
+  final _formPhoneKey = GlobalKey<FormState>();
   bool isAPICallProcess = false;
   late FocusNode myFocusNode;
+  dynamic userId;
+  int? phoneNo;
   @override
   void initState() {
     super.initState();
     myFocusNode = FocusNode();
     myFocusNode.requestFocus();
-
     SmsAutoFill().listenForCode.call();
   }
 
@@ -126,8 +131,7 @@ class _VerifyState extends State<Verify> {
                           alignment: Alignment.centerLeft,
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const Join()));
+                              Navigator.of(context).pop();
                             },
                             child: Row(children: [
                               SizedBox(width: w * 7),
@@ -139,18 +143,35 @@ class _VerifyState extends State<Verify> {
                               SizedBox(
                                 width: w * 30,
                               ),
-                              TimerButton(
-                                label: "Send OTP Again",
-                                timeOutInSeconds: 30,
-                                onPressed: () {},
-                                disabledColor:
-                                    const Color.fromRGBO(247, 247, 247, 1),
-                                buttonType: ButtonType.TextButton,
-                                disabledTextStyle:
-                                    TextStyle(fontSize: 12.0, color: givenBlue),
-                                activeTextStyle: const TextStyle(
-                                    fontSize: 12.0,
-                                    color: Color.fromARGB(255, 243, 124, 33)),
+                              Form(
+                                key: _formPhoneKey,
+                                child: TimerButton(
+                                  label: "Send OTP Again",
+                                  timeOutInSeconds: 60,
+                                  onPressed: () async {
+                                    if (_formPhoneKey.currentState!
+                                        .validate()) {
+                                      _formPhoneKey.currentState!.save();
+                                      print(widget.phNumber.toString());
+                                      var response = await registerCustomer(
+                                          PhoneNo: int.parse(
+                                              widget.phNumber.toString()));
+                                      print(response["statusdesc"]);
+                                      putPhoneToLocal(
+                                        phoneNo: int.parse(
+                                            widget.phNumber.toString()),
+                                      );
+                                    }
+                                  },
+                                  disabledColor:
+                                      const Color.fromRGBO(247, 247, 247, 1),
+                                  buttonType: ButtonType.TextButton,
+                                  disabledTextStyle: TextStyle(
+                                      fontSize: 12.0, color: givenBlue),
+                                  activeTextStyle: const TextStyle(
+                                      fontSize: 12.0,
+                                      color: Color.fromARGB(255, 243, 124, 33)),
+                                ),
                               ),
                             ]),
                           ),
@@ -201,7 +222,7 @@ class _VerifyState extends State<Verify> {
                             pastedTextStyle: TextStyle(color: givenBlue),
                             blinkWhenObscuring: true,
                             appContext: context,
-                            length: 6,
+                            length: 4,
                             cursorWidth: 1.0,
                             pinTheme: PinTheme(
                                 activeColor: givenBlue,
@@ -226,9 +247,27 @@ class _VerifyState extends State<Verify> {
                           )),
                           backgroundColor: MaterialStateProperty.all(givenBlue),
                         ),
-                        onPressed: () {
-                          print("Verification id is =${widget.VerificationId}");
-                          verifyOTP(widget.VerificationId.toString());
+                        onPressed: () async {
+                          phoneNo = await getPhoneFromLocal();
+                          var response = await driverProfile(PhoneNo: phoneNo);
+                          userId = response.id;
+                          print(userId);
+                          var message = await verifyOtp(
+                              otp: int.parse(otp.text), userId: userId);
+                          putUserToLocal(userId: userId);
+                          print(message.message);
+                          Fluttertoast.showToast(
+                              msg: "Logged In Successfully",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.green,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Design()));
+                          // print("Verification id is =${widget.VerificationId}");
+                          // verifyOTP(widget.VerificationId.toString());
                         },
                         child: SizedBox(
                           width: 28 * w,
@@ -250,29 +289,29 @@ class _VerifyState extends State<Verify> {
     );
   }
 
-  void verifyOTP(String verificationId) async {
-    print(verificationId);
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationId, smsCode: otp.text);
-
-    await auth.signInWithCredential(credential).then((value) async {
-      if (value.user != null) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => Design()),
-            (route) => false);
-      }
-      print("You are logged in successfully");
-      Fluttertoast.showToast(
-          msg: "You are logged in successfully",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    });
-  }
+  // void verifyOTP(String verificationId) async {
+  //   print(verificationId);
+  //   PhoneAuthCredential credential = PhoneAuthProvider.credential(
+  //       verificationId: verificationId, smsCode: otp.text);
+  //
+  //   await auth.signInWithCredential(credential).then((value) async {
+  //     if (value.user != null) {
+  //       Navigator.pushAndRemoveUntil(
+  //           context,
+  //           MaterialPageRoute(builder: (context) => Design()),
+  //           (route) => false);
+  //     }
+  //     print("You are logged in successfully");
+  //     Fluttertoast.showToast(
+  //         msg: "You are logged in successfully",
+  //         toastLength: Toast.LENGTH_SHORT,
+  //         gravity: ToastGravity.CENTER,
+  //         timeInSecForIosWeb: 1,
+  //         backgroundColor: Colors.red,
+  //         textColor: Colors.white,
+  //         fontSize: 16.0);
+  //   });
+  // }
 
   @override
   void dispose() {

@@ -7,6 +7,7 @@ import 'carDetails.dart';
 
 class Design extends StatefulWidget {
   Design({Key? key}) : super(key: key);
+  static String routeName = "/design";
   @override
   State<Design> createState() => _DesignState();
 }

@@ -154,11 +154,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     bottom: 10),
                 child: MaterialButton(
                   onPressed: () {
-<<<<<<< HEAD
-                    // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>,),),
-=======
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PreferencesPage()));
->>>>>>> 323b45825c60870fe7db8f6149586393e4568901
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const PreferencesPage()));
                   },
                   child: SizedBox(
                     height: 40,

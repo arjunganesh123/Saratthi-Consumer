@@ -39,56 +39,90 @@ class _PreferencesPageState extends State<PreferencesPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05,left: MediaQuery.of(context).size.width*0.22,bottom: MediaQuery.of(context).size.height*0.06),
-              child: Text('Preferences',style: TextStyle(color: givenBlue,fontSize: 12,fontFamily: 'OPTICopperplate'),)),
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.05,
+                  left: MediaQuery.of(context).size.width * 0.22,
+                  bottom: MediaQuery.of(context).size.height * 0.06),
+              child: Text(
+                'Preferences',
+                style: TextStyle(
+                    color: givenBlue,
+                    fontSize: 12,
+                    fontFamily: 'OPTICopperplate'),
+              )),
           Padding(
             padding: const EdgeInsets.all(5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                    padding:EdgeInsets.only(left: MediaQuery.of(context).size.width*0.08,bottom: MediaQuery.of(context).size.height*0.015),
-                    child: Text('EMAIL',style: TextStyle(color: givenBlue,fontSize: 10,fontFamily: 'OPTICopperplate',),)),
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.08,
+                        bottom: MediaQuery.of(context).size.height * 0.015),
+                    child: Text(
+                      'EMAIL',
+                      style: TextStyle(
+                        color: givenBlue,
+                        fontSize: 10,
+                        fontFamily: 'OPTICopperplate',
+                      ),
+                    )),
                 Padding(
-                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12,bottom: MediaQuery.of(context).size.height*0.03),
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.12,
+                      bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text('Allow promotions and offers email',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                      const SizedBox(width:40),
-                      FlutterSwitch(
-                        activeColor: givenBlue,
-                        width: 50.0,
-                        height: 20.0,
-                        valueFontSize: 12.0,
-                        toggleSize: 18.0,
-                        value: status1,
-                        onToggle: (isOn) {
-                          setState(() {
-                            status1 = isOn;
-                          });
-                        },
+                      const Text(
+                        'Allow promotions and offers email',
+                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      ),
+                      const SizedBox(width: 40),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: FlutterSwitch(
+                          activeColor: givenBlue,
+                          width: 50.0,
+                          height: 20.0,
+                          valueFontSize: 12.0,
+                          toggleSize: 18.0,
+                          value: status1,
+                          onToggle: (isOn) {
+                            setState(() {
+                              status1 = isOn;
+                            });
+                          },
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12,bottom: MediaQuery.of(context).size.height*0.03),
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.12,
+                      bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text('Allow emails for invoices',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
+                      const Text(
+                        'Allow emails for invoices',
+                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      ),
                       const SizedBox(width: 99),
-                      FlutterSwitch(
-                        activeColor: givenBlue,
-                        width: 50.0,
-                        height: 20.0,
-                        valueFontSize: 12.0,
-                        toggleSize: 18.0,
-                        value: status2,
-                        onToggle: (isOn) {
-                          setState(() {
-                            status2 = isOn;
-                          });
-                        },
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: FlutterSwitch(
+                          activeColor: givenBlue,
+                          width: 50.0,
+                          height: 20.0,
+                          valueFontSize: 12.0,
+                          toggleSize: 18.0,
+                          value: status2,
+                          onToggle: (isOn) {
+                            setState(() {
+                              status2 = isOn;
+                            });
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -102,14 +136,28 @@ class _PreferencesPageState extends State<PreferencesPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                    padding:EdgeInsets.only(left: MediaQuery.of(context).size.width*0.08,bottom: MediaQuery.of(context).size.height*0.015),
-                    child: Text('SMS AND WHATSAPP',style: TextStyle(color: givenBlue,fontSize: 10,fontFamily: 'OPTICopperplate',),)),
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.08,
+                        bottom: MediaQuery.of(context).size.height * 0.015),
+                    child: Text(
+                      'SMS AND WHATSAPP',
+                      style: TextStyle(
+                        color: givenBlue,
+                        fontSize: 10,
+                        fontFamily: 'OPTICopperplate',
+                      ),
+                    )),
                 Padding(
-                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12,bottom: MediaQuery.of(context).size.height*0.03),
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.12,
+                      bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text('Allow invoices',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                      const SizedBox(width:160),
+                      const Text(
+                        'Allow invoices',
+                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      ),
+                      const SizedBox(width: 160),
                       FlutterSwitch(
                         activeColor: givenBlue,
                         width: 50.0,
@@ -127,10 +175,15 @@ class _PreferencesPageState extends State<PreferencesPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12,bottom: MediaQuery.of(context).size.height*0.03),
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.12,
+                      bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text('Allow promotional offers',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
+                      const Text(
+                        'Allow promotional offers',
+                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      ),
                       const SizedBox(width: 93),
                       FlutterSwitch(
                         activeColor: givenBlue,
@@ -149,11 +202,18 @@ class _PreferencesPageState extends State<PreferencesPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12,bottom: MediaQuery.of(context).size.height*0.03),
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.12,
+                      bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text('Allow updates on WhatsApp',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                      const SizedBox(width: 72,),
+                      const Text(
+                        'Allow updates on WhatsApp',
+                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      ),
+                      const SizedBox(
+                        width: 72,
+                      ),
                       FlutterSwitch(
                         activeColor: givenBlue,
                         width: 50.0,
@@ -179,14 +239,29 @@ class _PreferencesPageState extends State<PreferencesPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                    padding:EdgeInsets.only(left: MediaQuery.of(context).size.width*0.08,bottom: MediaQuery.of(context).size.height*0.015),
-                    child: Text('PUSH NOTIFICATIONS',style: TextStyle(color: givenBlue,fontSize: 10,fontFamily: 'OPTICopperplate',),)),
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.08,
+                        bottom: MediaQuery.of(context).size.height * 0.015),
+                    child: Text(
+                      'PUSH NOTIFICATIONS',
+                      style: TextStyle(
+                        color: givenBlue,
+                        fontSize: 10,
+                        fontFamily: 'OPTICopperplate',
+                      ),
+                    )),
                 Padding(
-                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12),
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.12),
                   child: Row(
                     children: [
-                      const Text('Allow mobile push notifications',style: TextStyle(fontSize: 15,fontFamily: 'gillsans'),),
-                      const SizedBox(width: 52,),
+                      const Text(
+                        'Allow mobile push notifications',
+                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      ),
+                      const SizedBox(
+                        width: 52,
+                      ),
                       FlutterSwitch(
                         activeColor: givenBlue,
                         width: 50.0,
