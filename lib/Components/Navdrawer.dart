@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_indicator/progress_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Views/Login/edit%20user.dart';
 import 'package:saratthi_consumer/Views/Login/notification.dart';
 import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
 import 'package:saratthi_consumer/Views/Login/settingspage.dart';
@@ -72,11 +73,17 @@ class NavDrawer extends StatelessWidget {
                         const SizedBox(
                           width: 40.0,
                         ),
-                        Image.asset(
-                          'assets/Icons/026-pencil.png',
-                          color: givenBlue,
-                          width: 25,
-                          height: 25,
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => EditUser()));
+                          },
+                          child: Image.asset(
+                            'assets/Icons/026-pencil.png',
+                            color: givenBlue,
+                            width: 25,
+                            height: 25,
+                          ),
                         )
                       ],
                     )),
