@@ -4,7 +4,7 @@ import 'package:saratthi_consumer/Views/Login/selectGeatType.dart';
 import '../../Helpers/change.dart';
 import 'Home.dart';
 import 'carDetails.dart';
-
+List<ModelAndRegister> modreg=<ModelAndRegister>[];
 class Design extends StatefulWidget {
   Design({Key? key}) : super(key: key);
   static String routeName = "/design";
@@ -222,7 +222,7 @@ class _DesignState extends State<Design> {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Home(car_detail),
+                        builder: (context) => Home(car_detail,modreg),
                       ));
                     },
                     child: SizedBox(
@@ -323,7 +323,9 @@ class Grid {
                             content: CarDetails(
                                 itemTypList: carDetail[index].carModels),
                           );
-                        }).then((val) {});
+                        }).then((val) {
+                              modreg.add(ModelAndRegister(Model: val['model'], Register: val['register']));
+                    });
                   },
                   child: Image.asset(
                     'assets/Icons/002-options.png',

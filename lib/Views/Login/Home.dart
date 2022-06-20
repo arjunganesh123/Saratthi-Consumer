@@ -10,7 +10,8 @@ import '../../Helpers/change.dart';
 class Home extends StatefulWidget {
   // List<Change2> logo = <Change2>[];
   List<Change2> logo = <Change2>[];
-  Home(List<Change2> this.logo, {Key? key}) : super(key: key);
+  List<ModelAndRegister> modreg=<ModelAndRegister>[];
+  Home(List<Change2> this.logo,List<ModelAndRegister> this.modreg ,{Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -26,7 +27,6 @@ class _HomeState extends State<Home> {
 
   void _onMapCreated(GoogleMapController _cntlr) {
     _controller = _cntlr;
-
     _location.onLocationChanged.listen((l) {
       setState(() {
         _markers.add(
@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       key: _scaffoldState,
       drawer: const NavDrawer(),
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Stack(
@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
               right: 0.0,
               bottom: 0.0,
               child: Container(
-                  height: h * .20,
+                  height: h * .22,
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(247, 247, 247, 1),
                       borderRadius: BorderRadius.only(
@@ -115,14 +115,14 @@ class _HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             Container(
                               padding:
                                   const EdgeInsets.only(left: 20, right: 20),
                               width: MediaQuery.of(context).size.width,
                               margin: EdgeInsets.only(bottom: h * .007),
-                              height: 70,
+                              height: 75,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: widget.logo.length,
@@ -159,12 +159,23 @@ class _HomeState extends State<Home> {
                                           right: 0,
                                           left: 12,
                                           child: Container(
-                                            padding: EdgeInsets.only(top: 10.0),
-                                            child: Text(
-                                              "UP 11 T5872",
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  letterSpacing: .1),
+                                            padding: EdgeInsets.only(top: 5.0),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  widget.modreg[counter].Model,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      letterSpacing: .1),
+                                                ),
+                                                Text(
+                                                  widget.modreg[counter].Register,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      letterSpacing: .1),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),

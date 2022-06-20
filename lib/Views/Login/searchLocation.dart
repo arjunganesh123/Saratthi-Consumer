@@ -249,7 +249,7 @@ class _SearchLocationState extends State<SearchLocation> {
                     height: 20.0,
                   ),
                   SizedBox(
-                    height: .4 * h,
+                    height: .35 * h,
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         itemCount: 3,
@@ -278,9 +278,6 @@ class _SearchLocationState extends State<SearchLocation> {
                             ),
                           );
                         }),
-                  ),
-                  const SizedBox(
-                    height: 20.0,
                   ),
                 ],
               )),
