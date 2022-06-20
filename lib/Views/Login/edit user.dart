@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 
@@ -18,8 +17,10 @@ class _EditUserState extends State<EditUser> {
   TextEditingController dob = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController gender = TextEditingController();
+
+  bool editvalue = false;
+  String dropdownvalue = 'Male';
   final Color givenBlue = HexColor('#314b5c');
-  String? dropValue = "Male";
   int? userId;
   int? phoneNo;
   DateTime? _selectedDate;
@@ -189,6 +190,19 @@ class _EditUserState extends State<EditUser> {
                               fontFamily: 'gillsans',
                               color: Colors.black),
                         )),
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            editvalue = false;
+                          });
+                        },
+                        child: const Text(
+                          'Save',
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontFamily: 'gillsans',
+                              color: Colors.black),
+                        )),
                   ],
                 ),
               ),
@@ -286,26 +300,32 @@ class _EditUserState extends State<EditUser> {
                       width: 20,
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 50,
                       width: MediaQuery.of(context).size.width * 0.6,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.grey, width: 2.0),
-                          ),
-                          hintText: 'Full Name',
-                          hintStyle: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontFamily: 'OPTICopperplate'),
-                        ),
-                        cursorColor: Colors.black,
-                        cursorHeight: 25,
-                        style: TextStyle(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: dropdownvalue,
+                        icon: const Icon(Icons.keyboard_arrow_down),
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                             fontFamily: 'gillsans'),
+                        underline: Container(
+                          height: 1,
+                          color: Colors.grey,
+                        ),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownvalue = newValue!;
+                          });
+                        },
+                        items: <String>['Male', 'Female']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ],
@@ -327,8 +347,9 @@ class _EditUserState extends State<EditUser> {
                     SizedBox(
                       height: 30,
                       width: MediaQuery.of(context).size.width * 0.6,
-                      child: const TextField(
-                        decoration: InputDecoration(
+                      child: TextField(
+                        enabled: editvalue,
+                        decoration: const InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 2.0),
