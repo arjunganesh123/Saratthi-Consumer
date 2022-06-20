@@ -28,3 +28,9 @@ class Refer {
   String image;
   Refer({required this.image});
 }
+
+class ModelAndRegister{
+  String Model;
+  String Register;
+  ModelAndRegister({required this.Model,required this.Register});
+}

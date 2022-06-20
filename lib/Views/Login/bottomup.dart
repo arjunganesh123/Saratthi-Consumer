@@ -41,7 +41,7 @@ class BottomUp extends StatelessWidget {
                   color: Color(0xFF314b5c),
                   fontFamily: 'gillsans')),
           const Text(
-              'Kindly note that the female drivers have the right to deny the ride in case of above conditions are not fulfilled or destination of the ride is marked "unsafe for female" within our system.\n\n',
+              'Kindly note that the female drivers have the right to deny the ride in case of above conditions are not fulfilled or destination of the ride is marked "unsafe for female" within our system.\n',
               textAlign: TextAlign.left,
               style: TextStyle(
                   fontSize: 17.0,
@@ -78,7 +78,7 @@ class BottomUp extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: w * 15,
+                width: 20,
               ),
               ElevatedButton(
                 style: ButtonStyle(

@@ -91,7 +91,7 @@ class _CarDetailsState extends State<CarDetails> {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -124,7 +124,7 @@ class _CarDetailsState extends State<CarDetails> {
                 ),
               ),
               SizedBox(
-                width: w * 15,
+                width: 20,
               ),
               ElevatedButton(
                 style: ButtonStyle(
@@ -136,7 +136,9 @@ class _CarDetailsState extends State<CarDetails> {
                       MaterialStateProperty.all(const Color(0xFF314b5c)),
                 ),
                 onPressed: () {
-                  Navigator.pop(context, regNumController.text.toString());
+                  String reg=regNumController.text.toString();
+                  final data={'model':'$_btn2SelectedVal','register':reg};
+                  Navigator.pop(context, data,);
                 },
                 child: const SizedBox(
                   width: 70,
