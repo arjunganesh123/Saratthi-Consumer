@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class EditUser extends StatefulWidget {
@@ -10,10 +9,12 @@ class EditUser extends StatefulWidget {
 }
 
 class _EditUserState extends State<EditUser> {
+  String dropdownvalue='Male';
   final Color givenBlue = HexColor('#314b5c');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       floatingActionButton: SizedBox(
         height: 50,
@@ -164,18 +165,28 @@ class _EditUserState extends State<EditUser> {
                     ),
                     const SizedBox(width: 20,),
                     SizedBox(
-                      height: 30,width: MediaQuery.of(context).size.width*0.6,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey,width: 2.0),
-                          ),
-                          hintText: 'Full Name',
-                          hintStyle: TextStyle(color: Colors.grey,fontSize: 15,fontFamily: 'OPTICopperplate'),
+                      height: 50,width: MediaQuery.of(context).size.width*0.6,
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: dropdownvalue,
+                        icon: const Icon(Icons.keyboard_arrow_down),
+                        style: const TextStyle(color: Colors.black,fontSize: 20,fontFamily: 'gillsans'),
+                        underline: Container(
+                          height: 1,
+                          color: Colors.grey,
                         ),
-                        cursorColor: Colors.black,
-                        cursorHeight: 25,
-                        style: TextStyle(color: Colors.black,fontSize: 20,fontFamily: 'gillsans'),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownvalue = newValue!;
+                          });
+                        },
+                        items: <String>['Male','Female']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                       ),
                     ),
                   ],
