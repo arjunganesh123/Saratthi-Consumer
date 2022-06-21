@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:saratthi_consumer/Services/customer_profile_pic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,17 +19,19 @@ import '../../Services/customer_verify_profile.dart';
 
 class ProfileForm extends StatefulWidget {
   const ProfileForm({Key? key}) : super(key: key);
+
   @override
   _ProfileFormState createState() => _ProfileFormState();
 }
 
 class _ProfileFormState extends State<ProfileForm> {
+  final Color givenBlue = HexColor('#314b5c');
   TextEditingController nameController = TextEditingController();
   TextEditingController dob = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController gender = TextEditingController();
   XFile? imageFile;
-  String? dropValue = "Male";
+  String? dropValue;
   int? userId;
   DateTime? _selectedDate;
   int? phoneNo;
@@ -54,6 +57,7 @@ class _ProfileFormState extends State<ProfileForm> {
   }
 
   File? image;
+
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -258,137 +262,137 @@ class _ProfileFormState extends State<ProfileForm> {
                       topRight: Radius.circular(18.0),
                     ),
                   ),
-                  child: Card(
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      ProfileFormFields(
+                        w: w,
+                        hintText: "Full Name",
+                        h: h,
+                        controller: nameController,
+                        iconName: "045-user.png",
+                        textInputType: TextInputType.name,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Stack(children: [
                         ProfileFormFields(
                           w: w,
-                          hintText: "Full Name",
+                          hintText: "DateOf Birth",
                           h: h,
-                          controller: nameController,
-                          iconName: "045-user.png",
-                          textInputType: TextInputType.name,
+                          controller: dob,
+                          iconName: "051-birthday-cake.png",
+                          textInputType: TextInputType.text,
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Stack(children: [
-                          ProfileFormFields(
-                            w: w,
-                            hintText: "DateOf Birth",
-                            h: h,
-                            controller: dob,
-                            iconName: "051-birthday-cake.png",
-                            textInputType: TextInputType.text,
+                        Positioned(
+                          left: getProportionateScreenWidth(15 * w),
+                          child: InkWell(
+                            onTap: () {
+                              _presentDatePicker();
+                              setState(() {
+                                dob.text = DateFormat("dd-MMMM-yyyy").format(
+                                  DateTime.parse(_selectedDate.toString()),
+                                );
+                              });
+                            },
+                            child: Container(
+                              color: Colors.transparent,
+                              width: getProportionateScreenWidth(70 * w),
+                              height: 50,
+                            ),
                           ),
-                          Positioned(
-                            left: getProportionateScreenWidth(15 * w),
-                            child: InkWell(
-                              onTap: () {
-                                _presentDatePicker();
+                        ),
+                      ]),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Image.asset(
+                            "assets/Icons/052-gender.png",
+                            width: getProportionateScreenWidth(
+                              7 * w,
+                            ),
+                          ),
+                          SizedBox(
+                            width: getProportionateScreenWidth(70 * w),
+                            height: getProportionateScreenHeight(5 * h),
+                            child: DropdownButtonFormField(
+                              isExpanded: true,
+                              hint: const Text('Enter your gender'),
+                              decoration:  InputDecoration(
+                                hintStyle: TextStyle(
+                                    color: givenBlue, fontSize: 15),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(10, 0, 10, 5),
+                                focusedBorder: const OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide: BorderSide(
+                                    color: Color(0xFF314b5c),
+                                    width: 3,
+                                  ),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  borderSide: BorderSide(
+                                    color: Color(0xFF314b5c),
+                                    width: 3,
+                                  ),
+                                ),
+                              ),
+                              value: dropValue,
+                              dropdownColor: Colors.white,
+                              onChanged: (String? newValue) {
                                 setState(() {
-                                  dob.text = DateFormat("dd-MMMM-yyyy").format(
-                                    DateTime.parse(_selectedDate.toString()),
-                                  );
+                                  dropValue = newValue!;
+                                  gender.text = dropValue.toString();
                                 });
                               },
-                              child: Container(
-                                color: Colors.transparent,
-                                width: getProportionateScreenWidth(70 * w),
-                                height: 50,
+                              iconDisabledColor: Colors.grey,
+                              iconEnabledColor: Colors.black,
+                              items: <String>[
+                                'Male',
+                                'Female',
+                                'Others'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: const TextStyle(
+                                      color: Color(0xFF314b5c),
+                                      fontFamily: 'Luxia',
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
                             ),
                           ),
-                        ]),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Image.asset(
-                              "assets/Icons/052-gender.png",
-                              width: getProportionateScreenWidth(
-                                7 * w,
-                              ),
-                            ),
-                            Container(
-                              width: getProportionateScreenWidth(70 * w),
-                              height: getProportionateScreenHeight(5 * h),
-                              child: DropdownButtonFormField(
-                                decoration: const InputDecoration(
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey, fontSize: 15),
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(10, 0, 10, 5),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF314b5c),
-                                      width: 3,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF314b5c),
-                                      width: 3,
-                                    ),
-                                  ),
-                                ),
-                                value: dropValue,
-                                dropdownColor: Colors.white,
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    dropValue = newValue!;
-                                    gender.text = dropValue.toString();
-                                  });
-                                },
-                                iconDisabledColor: Colors.grey,
-                                iconEnabledColor: Colors.black,
-                                items: <String>[
-                                  'Male',
-                                  'Female',
-                                  'Others'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style: const TextStyle(
-                                        color: Color(0xFF314b5c),
-                                        fontFamily: 'Luxia',
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  );
-                                }).toList(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        ProfileFormFields(
-                          w: w,
-                          hintText: "Email",
-                          h: h,
-                          controller: email,
-                          iconName: "mail.png",
-                          textInputType: TextInputType.emailAddress,
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ProfileFormFields(
+                        w: w,
+                        hintText: "Email",
+                        h: h,
+                        controller: email,
+                        iconName: "mail.png",
+                        textInputType: TextInputType.emailAddress,
+                      ),
+                    ],
                   ),
                 ),
               ],
