@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class DrivesDetails extends StatelessWidget {
-  final Color givenBlue = HexColor('#314b5c');
+class DrivesDetails extends StatefulWidget {
 
-  DrivesDetails({Key? key}) : super(key: key);
+  const DrivesDetails({Key? key}) : super(key: key);
+
+  @override
+  State<DrivesDetails> createState() => _DrivesDetailsState();
+}
+
+class _DrivesDetailsState extends State<DrivesDetails> {
+  var _myColorOne = Colors.grey;
+  var _myColorTwo = Colors.grey;
+  var _myColorThree = Colors.grey;
+  var _myColorFour = Colors.grey;
+  var _myColorFive = Colors.grey;
+  final Color givenBlue = HexColor('#314b5c');
 
   @override
   Widget build(BuildContext context) {
@@ -176,8 +187,94 @@ class DrivesDetails extends StatelessWidget {
               padding: EdgeInsets.only(left: 15,top: 5,bottom: 5),
               child: Text('Start time:\t\t'+'12 Feb,2022 1 PM',style: TextStyle(color: Colors.grey,fontFamily: 'gillsans',fontSize: 15),)),
           const Padding(
-              padding: EdgeInsets.only(left: 15,top: 5,bottom: 5),
+              padding: EdgeInsets.only(left: 15,top: 5,bottom: 10),
               child: Text('End time:\t\t\t\t'+'12 Feb,2022 3:23 PM',style: TextStyle(color: Colors.grey,fontFamily: 'gillsans',fontSize: 15),)),
+          Padding(
+            padding: const EdgeInsets.only(left: 12, right: 12),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              elevation: 5,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Container(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10,left: 5,right: 10),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.08,
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                       CircleAvatar(
+                         radius: 40,
+                         child: Image.asset('assets/Icons/061-driver-1.png',fit: BoxFit.fitWidth,),
+                       ),
+                       Column(
+                        children: const [
+                          SizedBox(height: 7,),
+                          Text('Surendar Joshi',style: TextStyle(color: Colors.black87,fontSize: 15,fontFamily: 'gillsans'),),
+                          Text('36 yrs\t\t\t'+'double vaccine',style: TextStyle(color: Colors.grey,fontSize: 10,fontFamily: 'gillsans'),),
+                        ],
+                      ),
+                       const SizedBox(width: 20,),
+                       IconButton(
+                         padding: EdgeInsets.zero,
+                         constraints: const BoxConstraints(),
+                         icon: const Icon(Icons.star,size: 20,),
+                         onPressed: ()=>setState((){
+                           _myColorOne=Colors.orange;
+                           _myColorTwo=Colors.grey;
+                           _myColorThree=Colors.grey;
+                           _myColorFour=Colors.grey;
+                           _myColorFive=Colors.grey;
+                         }),color: _myColorOne,),
+                       IconButton(icon:  const Icon(Icons.star,size: 20,),
+                         padding: EdgeInsets.zero,
+                         constraints: const BoxConstraints(),
+                         onPressed: ()=>setState((){
+                           _myColorOne=Colors.orange;
+                           _myColorTwo=Colors.orange;
+                           _myColorThree=Colors.grey;
+                           _myColorFour=Colors.grey;
+                           _myColorFive=Colors.grey;
+                         }),color: _myColorTwo,),
+                       IconButton(
+                         padding: EdgeInsets.zero,
+                         constraints: const BoxConstraints(),
+                         icon: const Icon(Icons.star,size: 20,), onPressed: ()=>setState((){
+                         _myColorOne=Colors.orange;
+                         _myColorTwo=Colors.orange;
+                         _myColorThree=Colors.orange;
+                         _myColorFour=Colors.grey;
+                         _myColorFive=Colors.grey;
+                       }),color: _myColorThree,),
+                       IconButton(
+                         padding: EdgeInsets.zero,
+                         constraints: const BoxConstraints(),
+                         icon: const Icon(Icons.star,size: 20,), onPressed: ()=>setState((){
+                         _myColorOne=Colors.orange;
+                         _myColorTwo=Colors.orange;
+                         _myColorThree=Colors.orange;
+                         _myColorFour=Colors.orange;
+                         _myColorFive=Colors.grey;
+                       }),color: _myColorFour,),
+                       IconButton(
+                         padding: EdgeInsets.zero,
+                         constraints: const BoxConstraints(),
+                         icon: const Icon(Icons.star,size: 20,), onPressed: ()=>setState((){
+                         _myColorOne=Colors.orange;
+                         _myColorTwo=Colors.orange;
+                         _myColorThree=Colors.orange;
+                         _myColorFour=Colors.orange;
+                         _myColorFive=Colors.orange;
+                       }),color: _myColorFive,),
+                    ],
+
+                  ),
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 12, right: 12),
             child: Card(
