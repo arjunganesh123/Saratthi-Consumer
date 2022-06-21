@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,7 +34,7 @@ class _ProfileFormState extends State<ProfileForm> {
   DateTime? _selectedDate;
   int? phoneNo;
   String? name;
-
+  String? url;
   void _presentDatePicker() {
     // showDatePicker is a pre-made funtion of Flutter
     showDatePicker(
@@ -55,16 +56,39 @@ class _ProfileFormState extends State<ProfileForm> {
 
   File? image;
   Future pickImage() async {
+    final picker = ImagePicker();
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-      final imageTemp = File(image.path);
-      setState(() => this.image = imageTemp);
+      XFile? _pickedFile = await picker.pickImage(
+        source: ImageSource.gallery,
+      );
+
+      image = File(_pickedFile!.path);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
+    _upload(image!);
   }
 
+  void _upload(File file) async {
+    String fileName = file.path.split('/').last;
+
+    FormData data = FormData.fromMap({
+      "file": await MultipartFile.fromFile(
+        file.path,
+        filename: fileName,
+      ),
+    });
+    Dio dio = Dio();
+
+    dio
+        .post(
+            "https://saratthi-app.herokuapp.com/api/customer/profileupload/$userId",
+            data: data)
+        .then((response) => print(response))
+        .catchError((error) => print(error));
+  }
+
+  @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -79,9 +103,9 @@ class _ProfileFormState extends State<ProfileForm> {
     userId = response.id;
     nameController.text = response.fullname!;
     name = response.fullname!;
-    final prefs = await SharedPreferences.getInstance();
-
+    url = response.img!;
     email.text = response.email!;
+
     dob.text = DateFormat("dd-MMMM-yyyy").format(
       DateTime.parse(response.dob!),
     );
@@ -115,8 +139,7 @@ class _ProfileFormState extends State<ProfileForm> {
                         children: <Widget>[
                           InkWell(
                             onTap: () {
-                              Navigator.of(context).pop(
-                                  ["${phoneNo}", "${nameController.text}"]);
+                              Navigator.of(context).pop();
                             },
                             child: CircleAvatar(
                               backgroundColor:
@@ -174,11 +197,11 @@ class _ProfileFormState extends State<ProfileForm> {
                     child: CircleAvatar(
                         radius: 36,
                         backgroundColor: Colors.white,
-                        child: image != null
+                        child: url != null
                             ? ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
-                                child: Image.file(
-                                  image!,
+                                child: Image.network(
+                                  url as String,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
@@ -186,10 +209,10 @@ class _ProfileFormState extends State<ProfileForm> {
                               )
                             : ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
-                                child: Image.asset(
-                                  "assets/Icons/048-write.png",
-                                  width: 50,
-                                  height: 50,
+                                child: Image.network(
+                                  "https://saratthi-app.herokuapp.com/api/1655756709545-any-name-image2.jpg",
+                                  width: 100,
+                                  height: 100,
                                   fit: BoxFit.cover,
                                 ),
                               )),
@@ -236,10 +259,9 @@ class _ProfileFormState extends State<ProfileForm> {
                       email: email.text,
                       gender: dropValue,
                     );
-                    var res =
-                        await CustProfilePicUp(userId: userId, file: image);
+                    _upload(image!);
                     Fluttertoast.showToast(
-                        msg: "${response.message} ${res.message}",
+                        msg: "${response.message}",
                         toastLength: Toast.LENGTH_SHORT,
                         gravity: ToastGravity.CENTER,
                         timeInSecForIosWeb: 1,

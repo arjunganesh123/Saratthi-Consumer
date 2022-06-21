@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 //For Storing the phone no of driver in local storage
@@ -5,6 +7,21 @@ Future<void> putPhoneToLocal({int? phoneNo}) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   print(phoneNo);
   await prefs.setInt('phone', phoneNo!);
+}
+
+Future<void> putImgToLocal({String? image}) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  print(image);
+  await prefs.setString('image', image!);
+}
+
+Future<String?> getImgFromLocal() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? url;
+  if (prefs.containsKey('image')) {
+    url = prefs.getString('image')!;
+  }
+  return "https://saratthi-app.herokuapp.com/api/${url}";
 }
 
 //For getting the phone no driver from local storage
@@ -24,22 +41,6 @@ Future<int?> getUserFromLocal() async {
     userId = prefs.getInt('user')!;
   }
   return userId;
-}
-
-void setDetailsLocal({int? phNumber}) {
-  SharedPreferences sharedPreferences =
-      SharedPreferences.getInstance() as SharedPreferences;
-  sharedPreferences.setInt('phNumber', phNumber!);
-}
-
-int? getData() {
-  int? phNumber;
-  SharedPreferences sharedPreferences =
-      SharedPreferences.getInstance() as SharedPreferences;
-  if (sharedPreferences.containsKey('phNumber')) {
-    phNumber = sharedPreferences.getInt('phNumber');
-  }
-  return phNumber;
 }
 
 //For removing the phone no of driver from local storage
