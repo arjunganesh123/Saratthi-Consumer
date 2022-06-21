@@ -131,9 +131,12 @@ class _SearchLocationState extends State<SearchLocation> {
                     decoration: BoxDecoration(color: HexColor('#ffffff')),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.location_pin,
+                        Image.asset(
+                          "assets/Icons/007-location-pin.png",
+                          height: 20,
+                          width: 20,
                           color: givenBlue,
+                          fit: BoxFit.fitWidth,
                         ),
                         const SizedBox(
                           width: 20,
@@ -151,7 +154,7 @@ class _SearchLocationState extends State<SearchLocation> {
                             _pickedLocation1,
                             style: TextStyle(
                                 fontSize: 17.0,
-                                fontFamily: 'gillsans',
+                                fontFamily: 'Luxia',
                                 color: givenBlue),
                           ),
                         ),
@@ -218,9 +221,12 @@ class _SearchLocationState extends State<SearchLocation> {
                     decoration: BoxDecoration(color: HexColor('#ffffff')),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.location_pin,
+                        Image.asset(
+                          "assets/Icons/007-location-pin.png",
+                          height: 20,
+                          width: 20,
                           color: givenBlue,
+                          fit: BoxFit.fitWidth,
                         ),
                         const SizedBox(
                           width: 20,
@@ -238,7 +244,7 @@ class _SearchLocationState extends State<SearchLocation> {
                             _pickedLocation,
                             style: TextStyle(
                                 fontSize: 17.0,
-                                fontFamily: 'gillsans',
+                                fontFamily: 'Luxia',
                                 color: givenBlue),
                           ),
                         ),
