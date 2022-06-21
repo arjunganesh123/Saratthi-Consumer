@@ -7,8 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:saratthi_consumer/Services/customer_profile_pic.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../Components/custom_spacing.dart';
 import '../../Components/custom_text.dart';
 import '../../Constants/size_config.dart';
@@ -109,7 +107,7 @@ class _ProfileFormState extends State<ProfileForm> {
     name = response.fullname!;
     url = response.img!;
     email.text = response.email!;
-
+    gender.text = response.gender!;
     dob.text = DateFormat("dd-MMMM-yyyy").format(
       DateTime.parse(response.dob!),
     );
@@ -346,9 +344,9 @@ class _ProfileFormState extends State<ProfileForm> {
                             child: DropdownButtonFormField(
                               isExpanded: true,
                               hint: const Text('Enter your gender'),
-                              decoration:  InputDecoration(
-                                hintStyle: TextStyle(
-                                    color: givenBlue, fontSize: 15),
+                              decoration: InputDecoration(
+                                hintStyle:
+                                    TextStyle(color: givenBlue, fontSize: 15),
                                 contentPadding:
                                     const EdgeInsets.fromLTRB(10, 0, 10, 5),
                                 focusedBorder: const OutlineInputBorder(

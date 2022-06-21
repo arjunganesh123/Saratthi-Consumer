@@ -48,9 +48,9 @@ class _JoinState extends State<Join> {
                 Container(
                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   width: 95 * w,
-                  height: 48 * h,
+                  height: 56 * h,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: givenBlue,
                         width: 5,
@@ -59,11 +59,9 @@ class _JoinState extends State<Join> {
                     padding: const EdgeInsets.all(6.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Card(
-                        child: Image.asset(
-                            "assets/Images/image-620x525_consumer.png",
-                            fit: BoxFit.cover),
-                      ),
+                      child: Image.asset(
+                          "assets/Images/image-620x525_consumer.png",
+                          fit: BoxFit.cover),
                     ),
                   ),
                 ),

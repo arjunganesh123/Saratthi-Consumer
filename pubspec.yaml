@@ -125,7 +125,7 @@ flutter:
         - asset: fonts/OPTICopperplate.otf
     - family: Luxia
       fonts:
-        - asset: fonts/Luxia-Regular.otf
+        - asset: fonts/Luxia-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

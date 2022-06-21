@@ -28,7 +28,6 @@ class Verify extends StatefulWidget {
 class _VerifyState extends State<Verify> {
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController otp = TextEditingController();
-  Color givenBlue = HexColor('#314b5c');
   final _formPhoneKey = GlobalKey<FormState>();
   bool isAPICallProcess = false;
   late FocusNode myFocusNode;
@@ -46,7 +45,7 @@ class _VerifyState extends State<Verify> {
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width / 100;
     var h = MediaQuery.of(context).size.height / 100;
-
+    Color givenBlue = HexColor('#314b5c');
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -57,15 +56,10 @@ class _VerifyState extends State<Verify> {
               top: 0,
               left: 0,
               right: 0,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Card(
-                  child: Image.asset(
-                    "assets/Images/image2-620x525_consumer.png",
-                    fit: BoxFit.cover,
-                    height: 50 * h,
-                  ),
-                ),
+              child: Image.asset(
+                "assets/Images/image2-620x525_consumer.png",
+                fit: BoxFit.fill,
+                height: 50 * h,
               ),
             ),
             Positioned(
@@ -141,36 +135,42 @@ class _VerifyState extends State<Verify> {
                                 color: givenBlue,
                               ),
                               SizedBox(
-                                width: w * 30,
+                                width: w * 35.19,
                               ),
                               Form(
                                 key: _formPhoneKey,
-                                child: TimerButton(
-                                  label: "Send OTP Again",
-                                  timeOutInSeconds: 60,
-                                  onPressed: () async {
-                                    if (_formPhoneKey.currentState!
-                                        .validate()) {
-                                      _formPhoneKey.currentState!.save();
-                                      print(widget.phNumber.toString());
-                                      var response = await registerCustomer(
-                                          PhoneNo: int.parse(
-                                              widget.phNumber.toString()));
-                                      print(response["statusdesc"]);
-                                      putPhoneToLocal(
-                                        phoneNo: int.parse(
-                                            widget.phNumber.toString()),
-                                      );
-                                    }
-                                  },
-                                  disabledColor:
-                                      const Color.fromRGBO(247, 247, 247, 1),
-                                  buttonType: ButtonType.TextButton,
-                                  disabledTextStyle: TextStyle(
-                                      fontSize: 12.0, color: givenBlue),
-                                  activeTextStyle: const TextStyle(
-                                      fontSize: 12.0,
-                                      color: Color.fromARGB(255, 243, 124, 33)),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TimerButton(
+                                      label: "Send OTP Again",
+                                      timeOutInSeconds: 60,
+                                      onPressed: () async {
+                                        if (_formPhoneKey.currentState!
+                                            .validate()) {
+                                          _formPhoneKey.currentState!.save();
+                                          print(widget.phNumber.toString());
+                                          var response = await registerCustomer(
+                                              PhoneNo: int.parse(
+                                                  widget.phNumber.toString()));
+                                          print(response["statusdesc"]);
+                                          putPhoneToLocal(
+                                            phoneNo: int.parse(
+                                                widget.phNumber.toString()),
+                                          );
+                                        }
+                                      },
+                                      disabledColor: const Color.fromRGBO(
+                                          247, 247, 247, 1),
+                                      buttonType: ButtonType.TextButton,
+                                      disabledTextStyle: TextStyle(
+                                          fontSize: 12.0, color: givenBlue),
+                                      activeTextStyle: const TextStyle(
+                                          fontSize: 12.0,
+                                          color: Color.fromARGB(
+                                              255, 243, 124, 33)),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ]),

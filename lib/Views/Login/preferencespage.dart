@@ -19,6 +19,8 @@ class _PreferencesPageState extends State<PreferencesPage> {
   bool status6 = false;
   @override
   Widget build(BuildContext context) {
+    var h = MediaQuery.of(context).size.height;
+    var w = MediaQuery.of(context).size.width;
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       floatingActionButton: SizedBox(
@@ -73,11 +75,14 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text(
-                        'Allow promotions and offers email',
-                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      Container(
+                        width: w * .70,
+                        child: const Text(
+                          'Allow promotions and offers email',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
                       ),
-                      const SizedBox(width: 40),
                       Align(
                         alignment: Alignment.topRight,
                         child: FlutterSwitch(
@@ -103,26 +108,26 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text(
-                        'Allow emails for invoices',
-                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
-                      ),
-                      const SizedBox(width: 99),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: FlutterSwitch(
-                          activeColor: givenBlue,
-                          width: 50.0,
-                          height: 20.0,
-                          valueFontSize: 12.0,
-                          toggleSize: 18.0,
-                          value: status2,
-                          onToggle: (isOn) {
-                            setState(() {
-                              status2 = isOn;
-                            });
-                          },
+                      Container(
+                        width: w * .70,
+                        child: const Text(
+                          'Allow emails for invoices',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
                         ),
+                      ),
+                      FlutterSwitch(
+                        activeColor: givenBlue,
+                        width: 50.0,
+                        height: 20.0,
+                        valueFontSize: 12.0,
+                        toggleSize: 18.0,
+                        value: status2,
+                        onToggle: (isOn) {
+                          setState(() {
+                            status2 = isOn;
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -153,23 +158,30 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text(
-                        'Allow invoices',
-                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      Container(
+                        width: w * .70,
+                        child: const Text(
+                          'Allow invoices',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
                       ),
-                      const SizedBox(width: 160),
-                      FlutterSwitch(
-                        activeColor: givenBlue,
-                        width: 50.0,
-                        height: 20.0,
-                        valueFontSize: 12.0,
-                        toggleSize: 18.0,
-                        value: status3,
-                        onToggle: (isOn) {
-                          setState(() {
-                            status3 = isOn;
-                          });
-                        },
+                      Row(
+                        children: [
+                          FlutterSwitch(
+                            activeColor: givenBlue,
+                            width: 50.0,
+                            height: 20.0,
+                            valueFontSize: 12.0,
+                            toggleSize: 18.0,
+                            value: status3,
+                            onToggle: (isOn) {
+                              setState(() {
+                                status3 = isOn;
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -180,11 +192,14 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text(
-                        'Allow promotional offers',
-                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                      Container(
+                        width: w * .70,
+                        child: const Text(
+                          'Allow promotional offers',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
                       ),
-                      const SizedBox(width: 93),
                       FlutterSwitch(
                         activeColor: givenBlue,
                         width: 50.0,
@@ -207,12 +222,13 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       bottom: MediaQuery.of(context).size.height * 0.03),
                   child: Row(
                     children: [
-                      const Text(
-                        'Allow updates on WhatsApp',
-                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
-                      ),
-                      const SizedBox(
-                        width: 72,
+                      Container(
+                        width: w * .70,
+                        child: const Text(
+                          'Allow updates on WhatsApp',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
                       ),
                       FlutterSwitch(
                         activeColor: givenBlue,
@@ -242,12 +258,15 @@ class _PreferencesPageState extends State<PreferencesPage> {
                     padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.08,
                         bottom: MediaQuery.of(context).size.height * 0.015),
-                    child: Text(
-                      'PUSH NOTIFICATIONS',
-                      style: TextStyle(
-                        color: givenBlue,
-                        fontSize: 10,
-                        fontFamily: 'OPTICopperplate',
+                    child: Container(
+                      width: w * .70,
+                      child: Text(
+                        'PUSH NOTIFICATIONS',
+                        style: TextStyle(
+                          color: givenBlue,
+                          fontSize: 10,
+                          fontFamily: 'OPTICopperplate',
+                        ),
                       ),
                     )),
                 Padding(
@@ -255,12 +274,13 @@ class _PreferencesPageState extends State<PreferencesPage> {
                       left: MediaQuery.of(context).size.width * 0.12),
                   child: Row(
                     children: [
-                      const Text(
-                        'Allow mobile push notifications',
-                        style: TextStyle(fontSize: 15, fontFamily: 'gillsans'),
-                      ),
-                      const SizedBox(
-                        width: 52,
+                      Container(
+                        width: w * .70,
+                        child: const Text(
+                          'Allow mobile push notifications',
+                          style:
+                              TextStyle(fontSize: 15, fontFamily: 'gillsans'),
+                        ),
                       ),
                       FlutterSwitch(
                         activeColor: givenBlue,
