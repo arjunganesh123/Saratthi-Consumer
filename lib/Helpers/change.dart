@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
 class Change {
@@ -29,8 +30,14 @@ class Refer {
   Refer({required this.image});
 }
 
-class ModelAndRegister{
+class ModelAndRegister {
   String Model;
   String Register;
-  ModelAndRegister({required this.Model,required this.Register});
+  ModelAndRegister({required this.Model, required this.Register});
+}
+
+class UserData {
+  String phoneNumber;
+  String Name;
+  UserData({required this.Name, required this.phoneNumber});
 }

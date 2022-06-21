@@ -5,7 +5,6 @@ class DriverProfile {
   int? mobile;
   String? img;
   int? id;
-  String? ifsccode;
   String? email;
   DriverProfile({
     this.fullname,
@@ -14,7 +13,6 @@ class DriverProfile {
     this.mobile,
     this.img,
     this.id,
-    this.ifsccode,
     this.email,
   });
 
@@ -26,7 +24,6 @@ class DriverProfile {
     email = json['email'];
     img = json['img'];
     id = json['_id'];
-    ifsccode = json['ifsccode'];
   }
 
   Map<String, dynamic> toJson() {
@@ -38,7 +35,6 @@ class DriverProfile {
     data['mobile'] = this.mobile;
     data['img'] = this.img;
     data['_id'] = this.id;
-    data['ifsccode'] = this.ifsccode;
     return data;
   }
 }

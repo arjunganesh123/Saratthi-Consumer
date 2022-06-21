@@ -1,16 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:progress_indicator/progress_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:saratthi_consumer/Views/Login/edit%20user.dart';
+import 'package:saratthi_consumer/Views/Login/edit_profile.dart';
 import 'package:saratthi_consumer/Views/Login/notification.dart';
 import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
 import 'package:saratthi_consumer/Views/Login/settingspage.dart';
 import 'package:saratthi_consumer/Views/Login/support.dart';
 
+import '../Helpers/shared_services.dart';
+import '../Services/customer_verify_profile.dart';
 import '../Views/Login/referandearn.dart';
 
-class NavDrawer extends StatelessWidget {
+class NavDrawer extends StatefulWidget {
   const NavDrawer({Key? key}) : super(key: key);
+
+  @override
+  State<NavDrawer> createState() => _NavDrawerState();
+}
+
+class _NavDrawerState extends State<NavDrawer> {
+  int? phoneNo;
+  String? name;
+  TextEditingController nameController = TextEditingController();
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _asyncMethod();
+    });
+  }
+
+  _asyncMethod() async {
+    phoneNo = await getPhoneFromLocal();
+
+    var response = await driverProfile(PhoneNo: phoneNo);
+    nameController.text = response.fullname!;
+    name = nameController.text.toString();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +87,9 @@ class NavDrawer extends StatelessWidget {
                           width: 20.0,
                         ),
                         Text(
-                          "Naman Khurana\n+917017251685",
+                          phoneNo != null
+                              ? "${name}\n+91 $phoneNo"
+                              : "Name\n+91 1234567890",
                           style: TextStyle(
                             color: givenBlue,
                             fontFamily: 'Luxia',
@@ -76,7 +103,7 @@ class NavDrawer extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => EditUser()));
+                                builder: (context) => const ProfileForm()));
                           },
                           child: Image.asset(
                             'assets/Icons/026-pencil.png',

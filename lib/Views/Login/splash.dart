@@ -26,7 +26,7 @@ class _splashState extends State<splash> {
             ? Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => Design()))
             : Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => Design())));
+                .push(MaterialPageRoute(builder: (context) => Join())));
   }
 
   _asyncMethod() async {
