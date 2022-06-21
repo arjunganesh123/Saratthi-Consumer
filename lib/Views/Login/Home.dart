@@ -128,7 +128,7 @@ class _HomeState extends State<Home> {
                                 itemCount: widget.logo.length,
                                 itemBuilder: (context, counter) {
                                   return Container(
-                                    margin: EdgeInsets.only(left: 1),
+                                    margin: const EdgeInsets.only(left: 1),
                                     child: Stack(
                                       children: [
                                         ClipRRect(
@@ -159,24 +159,8 @@ class _HomeState extends State<Home> {
                                           right: 0,
                                           left: 12,
                                           child: Container(
-                                            padding: EdgeInsets.only(top: 5.0),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  widget.modreg[counter].Model,
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      letterSpacing: .1),
-                                                ),
-                                                Text(
-                                                  widget.modreg[counter].Register,
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      letterSpacing: .1),
-                                                ),
-                                              ],
-                                            ),
+                                            padding: const EdgeInsets.only(top: 5.0),
+                                            child: Texterror.selecttext(widget.modreg, counter),
                                           ),
                                         ),
                                       ],
@@ -237,5 +221,32 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+}
+
+class Texterror{
+  static Widget selecttext(List<ModelAndRegister> modreg,int counter){
+    if(modreg.isEmpty){
+      return const Text('Go back and give your\n registration number',style: TextStyle(fontSize: 5),);
+    }
+    else{
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            modreg[counter].Model,
+            style: const TextStyle(
+                fontSize: 10,
+                letterSpacing: .1),
+          ),
+          Text(
+            modreg[counter].Register,
+            style: const TextStyle(
+                fontSize: 10,
+                letterSpacing: .1),
+          ),
+        ],
+      );
+    }
   }
 }

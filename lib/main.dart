@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:saratthi_consumer/Views/Login/driverpage.dart';
 import 'package:saratthi_consumer/Views/Login/drivesdetails.dart';
 import 'package:saratthi_consumer/Views/Login/edit%20user.dart';
+import 'package:saratthi_consumer/Views/Login/newuser.dart';
 import 'Views/Login/splash.dart';
 
 void main() async {
