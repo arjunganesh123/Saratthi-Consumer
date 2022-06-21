@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:saratthi_consumer/Services/customer_profile_pic.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Components/custom_spacing.dart';
 import '../../Components/custom_text.dart';
 import '../../Constants/size_config.dart';
@@ -21,6 +27,7 @@ class _ProfileFormState extends State<ProfileForm> {
   TextEditingController dob = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController gender = TextEditingController();
+  XFile? imageFile;
   String? dropValue = "Male";
   int? userId;
   DateTime? _selectedDate;
@@ -46,6 +53,18 @@ class _ProfileFormState extends State<ProfileForm> {
     });
   }
 
+  File? image;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -55,10 +74,13 @@ class _ProfileFormState extends State<ProfileForm> {
 
   _asyncMethod() async {
     phoneNo = await getPhoneFromLocal();
+
     var response = await driverProfile(PhoneNo: phoneNo);
     userId = response.id;
     nameController.text = response.fullname!;
     name = response.fullname!;
+    final prefs = await SharedPreferences.getInstance();
+
     email.text = response.email!;
     dob.text = DateFormat("dd-MMMM-yyyy").format(
       DateTime.parse(response.dob!),
@@ -149,10 +171,28 @@ class _ProfileFormState extends State<ProfileForm> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(37),
                     ),
-                    child: const CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.white,
-                    ),
+                    child: CircleAvatar(
+                        radius: 36,
+                        backgroundColor: Colors.white,
+                        child: image != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image.file(
+                                  image!,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Image.asset(
+                                  "assets/Icons/048-write.png",
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
                   ),
                 ),
                 Row(
@@ -164,8 +204,15 @@ class _ProfileFormState extends State<ProfileForm> {
                         6 * w,
                       ),
                     ),
-                    CustomText(
-                        text: " Add/Replace", color: Colors.grey, fontSize: 17)
+                    InkWell(
+                      onTap: () {
+                        pickImage();
+                      },
+                      child: CustomText(
+                          text: " Add/Replace",
+                          color: Colors.grey,
+                          fontSize: 17),
+                    )
                   ],
                 )
               ],
@@ -189,8 +236,10 @@ class _ProfileFormState extends State<ProfileForm> {
                       email: email.text,
                       gender: dropValue,
                     );
+                    var res =
+                        await CustProfilePicUp(userId: userId, file: image);
                     Fluttertoast.showToast(
-                        msg: "${response.message}",
+                        msg: "${response.message} ${res.message}",
                         toastLength: Toast.LENGTH_SHORT,
                         gravity: ToastGravity.CENTER,
                         timeInSecForIosWeb: 1,
@@ -268,6 +317,7 @@ class _ProfileFormState extends State<ProfileForm> {
                             ),
                             Container(
                               width: getProportionateScreenWidth(70 * w),
+                              height: getProportionateScreenHeight(5 * h),
                               child: DropdownButtonFormField(
                                 decoration: const InputDecoration(
                                   hintStyle: TextStyle(

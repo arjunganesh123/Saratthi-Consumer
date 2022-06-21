@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Helpers/shared_services.dart';
+import 'package:saratthi_consumer/Views/Login/join.dart';
 import 'package:saratthi_consumer/Views/Login/preferencespage.dart';
+
+import 'edit user.dart';
 
 class SettingsPage extends StatefulWidget {
   final Color givenBlue = HexColor('#314b5c');
@@ -12,6 +16,18 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  int? phoneNo;
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _asyncMethod();
+    });
+  }
+
+  _asyncMethod() async {
+    phoneNo = await getPhoneFromLocal();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +79,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   width: MediaQuery.of(context).size.width * 0.55,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    removeFromLocal();
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Join()));
+                  },
                   child: const Text(
                     'Logout',
                     style: TextStyle(
@@ -93,20 +113,23 @@ class _SettingsPageState extends State<SettingsPage> {
                     right: 10,
                     bottom: 10),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ProfileForm()));
+                  },
                   child: SizedBox(
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'Profile',
                           style:
                               TextStyle(fontSize: 15, fontFamily: 'gillsans'),
                         ),
                         Text(
-                          '+91-9874569872',
-                          style: TextStyle(
+                          phoneNo == null ? '+91-9874569872' : "+91 $phoneNo",
+                          style: const TextStyle(
                               fontSize: 12,
                               fontFamily: 'gillsans',
                               color: Colors.black54),

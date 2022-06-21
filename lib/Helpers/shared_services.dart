@@ -26,6 +26,22 @@ Future<int?> getUserFromLocal() async {
   return userId;
 }
 
+void setDetailsLocal({int? phNumber}) {
+  SharedPreferences sharedPreferences =
+      SharedPreferences.getInstance() as SharedPreferences;
+  sharedPreferences.setInt('phNumber', phNumber!);
+}
+
+int? getData() {
+  int? phNumber;
+  SharedPreferences sharedPreferences =
+      SharedPreferences.getInstance() as SharedPreferences;
+  if (sharedPreferences.containsKey('phNumber')) {
+    phNumber = sharedPreferences.getInt('phNumber');
+  }
+  return phNumber;
+}
+
 //For removing the phone no of driver from local storage
 Future<void> removeFromLocal() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();

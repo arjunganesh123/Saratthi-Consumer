@@ -6,6 +6,7 @@ import 'package:saratthi_consumer/Views/Login/notification.dart';
 import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
 import 'package:saratthi_consumer/Views/Login/settingspage.dart';
 import 'package:saratthi_consumer/Views/Login/support.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Helpers/shared_services.dart';
 import '../Services/customer_verify_profile.dart';
@@ -32,11 +33,8 @@ class _NavDrawerState extends State<NavDrawer> {
   }
 
   _asyncMethod() async {
-    phoneNo = await getPhoneFromLocal();
-
-    var response = await driverProfile(PhoneNo: phoneNo);
-    nameController.text = response.fullname!;
-    name = nameController.text.toString();
+    final prefs = await SharedPreferences.getInstance();
+    name = prefs.getString('name');
   }
 
   @override
