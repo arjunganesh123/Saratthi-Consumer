@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Views/Login/drivesdetails.dart';
 
 class DriverPage extends StatefulWidget {
   final Color givenBlue = HexColor('#314b5c');
@@ -41,15 +42,15 @@ class _DriverPageState extends State<DriverPage> {
             child: Row(
               children: [
                 Text('DRIVES',style: TextStyle(fontSize: 15,color: widget.givenBlue,fontFamily: 'gilconst lsans',wordSpacing: 2),),
-                const SizedBox(width: 120,),
-                const Text('ONGOING DRIVE',style: TextStyle(fontSize: 12,color: Colors.blue,fontFamily: 'OPTICopperplate',wordSpacing: 1),),
+                const SizedBox(width: 150,),
+                const Text('ONGOING DRIVE',style: TextStyle(fontSize: 10,color: Colors.blue,fontFamily: 'OPTICopperplate',wordSpacing: 1),),
               ],
             ),
           ),
           const SizedBox(height: 15,),
           Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height*0.6,
+            height: MediaQuery.of(context).size.height*0.65,
             color: Colors.white,
             child: ListView.builder(
               padding: EdgeInsets.zero,
@@ -66,7 +67,9 @@ class _DriverPageState extends State<DriverPage> {
                       primary: Colors.white,
                       padding: const EdgeInsets.all(0),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DrivesDetails()));
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(5),
                       height: MediaQuery.of(context).size.height * 0.18,

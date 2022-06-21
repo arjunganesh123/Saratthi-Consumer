@@ -173,18 +173,13 @@ class _EditUserState extends State<EditUser> {
                       width: 40,
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            editvalue = true;
+                          });
+                        },
                         child: const Text(
                           'Edit',
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontFamily: 'gillsans',
-                              color: Colors.black),
-                        )),
-                    TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Save',
                           style: TextStyle(
                               fontSize: 17,
                               fontFamily: 'gillsans',
@@ -223,6 +218,7 @@ class _EditUserState extends State<EditUser> {
                       height: 30,
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: TextField(
+                        enabled: editvalue,
                         controller: nameController,
                         decoration: const InputDecoration(
                           focusedBorder: const UnderlineInputBorder(
@@ -263,6 +259,7 @@ class _EditUserState extends State<EditUser> {
                       height: 30,
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: TextField(
+                        enabled: editvalue,
                         controller: dob,
                         decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
