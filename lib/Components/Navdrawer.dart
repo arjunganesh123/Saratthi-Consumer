@@ -9,7 +9,8 @@ import 'package:saratthi_consumer/Views/Login/support.dart';
 
 import '../Helpers/shared_services.dart';
 import '../Services/customer_verify_profile.dart';
-import '../Views/Login/edit_profile.dart';
+
+import '../Views/Login/edit user.dart';
 import '../Views/Login/referandearn.dart';
 
 class NavDrawer extends StatefulWidget {
