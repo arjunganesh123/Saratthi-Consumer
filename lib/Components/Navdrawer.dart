@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_indicator/progress_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:saratthi_consumer/Views/Login/driverpage.dart';
 import 'package:saratthi_consumer/Views/Login/edit%20user.dart';
 import 'package:saratthi_consumer/Views/Login/notification.dart';
 import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
@@ -170,7 +171,13 @@ class NavDrawer extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  onTap: () => {Navigator.of(context).pop()},
+                  onTap: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => DriverPage(),
+                      ),
+                    ),
+                  },
                 ),
                 ListTile(
                   leading: Image.asset(
