@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_indicator/progress_indicator.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:saratthi_consumer/Views/Login/edit_profile.dart';
+import 'package:saratthi_consumer/Views/Login/driverpage.dart';
 import 'package:saratthi_consumer/Views/Login/notification.dart';
 import 'package:saratthi_consumer/Views/Login/paymentsPage.dart';
 import 'package:saratthi_consumer/Views/Login/settingspage.dart';
@@ -9,6 +9,7 @@ import 'package:saratthi_consumer/Views/Login/support.dart';
 
 import '../Helpers/shared_services.dart';
 import '../Services/customer_verify_profile.dart';
+import '../Views/Login/edit_profile.dart';
 import '../Views/Login/referandearn.dart';
 
 class NavDrawer extends StatefulWidget {
@@ -197,7 +198,13 @@ class _NavDrawerState extends State<NavDrawer> {
                       fontSize: 14,
                     ),
                   ),
-                  onTap: () => {Navigator.of(context).pop()},
+                  onTap: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => DriverPage(),
+                      ),
+                    ),
+                  },
                 ),
                 ListTile(
                   leading: Image.asset(

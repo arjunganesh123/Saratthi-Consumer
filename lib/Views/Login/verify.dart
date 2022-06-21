@@ -251,7 +251,6 @@ class _VerifyState extends State<Verify> {
                           phoneNo = await getPhoneFromLocal();
                           var response = await driverProfile(PhoneNo: phoneNo);
                           userId = response.id;
-                          print(userId);
                           var message = await verifyOtp(
                               otp: int.parse(otp.text), userId: userId);
                           putUserToLocal(userId: userId);
