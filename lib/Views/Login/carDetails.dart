@@ -49,22 +49,24 @@ class _CarDetailsState extends State<CarDetails> {
               ),
             ),
             child: ListTile(
-              leading: DropdownButton<String>(
-                value: _btn2SelectedVal,
-                elevation: 0,
-                iconEnabledColor: givenBlue,
-                hint: Text(
-                  "Select car Models           ",
-                  style: TextStyle(
-                      color: givenBlue, fontFamily: 'gillsans', fontSize: 17),
+              leading: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: _btn2SelectedVal,
+                  elevation: 0,
+                  iconEnabledColor: givenBlue,
+                  hint: Text(
+                    "Select car Models           ",
+                    style: TextStyle(
+                        color: givenBlue, fontFamily: 'gillsans', fontSize: 17),
+                  ),
+                  style: TextStyle(color: givenBlue, fontFamily: 'gillsans'),
+                  onChanged: (String? newValue) {
+                    if (newValue != null) {
+                      setState(() => _btn2SelectedVal = newValue);
+                    }
+                  },
+                  items: dropDownMenuItems,
                 ),
-                style: TextStyle(color: givenBlue, fontFamily: 'gillsans'),
-                onChanged: (String? newValue) {
-                  if (newValue != null) {
-                    setState(() => _btn2SelectedVal = newValue);
-                  }
-                },
-                items: dropDownMenuItems,
               ),
             ),
           ),
