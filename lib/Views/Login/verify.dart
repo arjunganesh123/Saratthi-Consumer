@@ -109,9 +109,9 @@ class _VerifyState extends State<Verify> {
                                   ),
                                   Text(
                                     "number (${widget.phNumber.toString()})",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontSize: 18.5,
-                                        color: Color.fromARGB(255, 48, 77, 49),
+                                        color: givenBlue,
                                         fontFamily: 'gillsans'),
                                   ),
                                 ]),
@@ -131,11 +131,12 @@ class _VerifyState extends State<Verify> {
                               SizedBox(width: w * 7),
                               CustomText(
                                 text: "Edit Number",
-                                fontSize: 12,
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
                                 color: givenBlue,
                               ),
                               SizedBox(
-                                width: w * 35.19,
+                                width: w * 38.2,
                               ),
                               Form(
                                 key: _formPhoneKey,
@@ -164,9 +165,13 @@ class _VerifyState extends State<Verify> {
                                           247, 247, 247, 1),
                                       buttonType: ButtonType.TextButton,
                                       disabledTextStyle: TextStyle(
-                                          fontSize: 12.0, color: givenBlue),
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1,
+                                          fontSize: 11.0,
+                                          color: givenBlue),
                                       activeTextStyle: const TextStyle(
-                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 11.0,
                                           color: Color.fromARGB(
                                               255, 243, 124, 33)),
                                     ),

@@ -35,7 +35,8 @@ class _ProfileFormState extends State<ProfileForm> {
   DateTime? _selectedDate;
   int? phoneNo;
   String? name;
-  String? url;
+  String url =
+      "https://saratthi-app.herokuapp.com/api/1655756709545-any-name-image2.jpg";
   void _presentDatePicker() {
     // showDatePicker is a pre-made funtion of Flutter
     showDatePicker(
@@ -199,25 +200,22 @@ class _ProfileFormState extends State<ProfileForm> {
                     child: CircleAvatar(
                         radius: 36,
                         backgroundColor: Colors.white,
-                        child: url != null
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(50),
-                                child: Image.network(
-                                  url as String,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: url != null
+                              ? Image.network(
+                                  url,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.file(
+                                  image!,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
                                 ),
-                              )
-                            : ClipRRect(
-                                borderRadius: BorderRadius.circular(50),
-                                child: Image.network(
-                                  "https://saratthi-app.herokuapp.com/api/1655756709545-any-name-image2.jpg",
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              )),
+                        )),
                   ),
                 ),
                 Row(
@@ -285,7 +283,7 @@ class _ProfileFormState extends State<ProfileForm> {
                   child: Column(
                     children: [
                       const SizedBox(
-                        height: 10,
+                        height: 30,
                       ),
                       ProfileFormFields(
                         w: w,
